@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GoFpg.API.Data.Entities.VehicleType>
+﻿@model IEnumerable<GoFpg.API.Data.Entities.DocumentType>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,7 +13,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Tipos de Vehiculo</h3>
+                <h3 class="panel-title">Document Types</h3>
             </div>
             <div class="panel-body">
                 <table class="table table-hover table-responsive table-striped" id="MyTable">
@@ -22,21 +22,24 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Description)
                             </th>
+
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var item in Model)
                         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
-                </td>
-            </tr>}
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Description)
+                                </td>
+
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -51,7 +54,8 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="/js/deleteDialog.js"></script>
 
-    <script type="text/javascript">$(document).ready(function () {
+    <script type="text/javascript">
+$(document).ready(function () {
             $('#MyTable').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -63,6 +67,6 @@
             });
 
             // Delete item
-            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/VehicleTypes/Delete/', false);
+            sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/DocumentTypes/Delete/', false);
         });</script>
 }
