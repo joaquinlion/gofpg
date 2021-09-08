@@ -1,4 +1,5 @@
 ﻿using GoFpg.API.Data.Entities;
+using GoFpg.API.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,8 @@ namespace GoFpg.API.Helpers
         Task AddUserToRoleAsync(User user, string roleName);
 
         Task<bool> IsUserInRoleAsync(User user, string roleName);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
 
+        Task LogoutAsync();
     }
 }
