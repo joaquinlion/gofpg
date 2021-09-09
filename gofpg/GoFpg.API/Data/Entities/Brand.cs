@@ -14,5 +14,7 @@ namespace GoFpg.API.Data.Entities
         [MaxLength(15, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Description { get; set; }
+
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }
