@@ -26,9 +26,7 @@ namespace GoFpg.API.Models
         [Display(Name = "Apellidos")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string LastName { get; set; }
-
-        
+        public string LastName { get; set; }      
 
         [Display(Name = "Documento")]
         [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
@@ -59,6 +57,10 @@ namespace GoFpg.API.Models
 
         public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
-        
+        [Display(Name = "Foto")]
+        public string ImageFullPath => ImageId == Guid.Empty
+            ? $"https://localhost:44320/images/noimage.png"
+            : $"https://fpglass.blob.core.windows.net/users/{ImageId}";
+
     }
 }
