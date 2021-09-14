@@ -31,13 +31,18 @@ namespace GoFpg.API.Data.Entities
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
-        [Display(Name = "Date of Loss")]
-        [DataType(DataType.Date)]
-        public DateTime DateOfLoss { get; set; }
+        [JsonIgnore]
+        [Display(Name = "Mecánico")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public User User { get; set; }
 
-        [Display(Name = "Repair o Replace")]
-        [DataType(DataType.Date)]
-        public bool JobType { get; set; }
+        //[Display(Name = "Date of Loss")]
+        //[DataType(DataType.Date)]
+        // public DateTime DateOfLoss { get; set; }
+
+        //[Display(Name = "Repair o Replace")]
+        //[DataType(DataType.Date)]
+        //public bool JobType { get; set; }
 
         public ICollection<Detail> Details { get; set; }
 

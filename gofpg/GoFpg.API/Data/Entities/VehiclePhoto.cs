@@ -19,6 +19,6 @@ namespace GoFpg.API.Data.Entities
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44320/images/noimage.png"
-            : $"https://fpglass.blob.core.windows.net/vehiclephotos/{ImageId}";
+            : $"https://fpglass.blob.core.windows.net/vehicles/{ImageId}";
     }
 }

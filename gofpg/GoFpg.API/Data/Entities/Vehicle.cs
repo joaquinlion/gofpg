@@ -14,31 +14,26 @@ namespace GoFpg.API.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public VehicleType VehicleType { get; set; }
 
-        //[Display(Name = "Year")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        //public string Year { get; set; }
-
         [Display(Name = "Marca")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public Brand Brand { get; set; }
 
-        [Display(Name = "Modelo")]
+        [Display(Name = "VIN Number")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(1900, 3000, ErrorMessage = "Valor de módelo no válido.")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
+        public string VinNumber { get; set; }
+
+        [Display(Name = "Year")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Range(1900, 2100, ErrorMessage = "Valor de módelo no válido.")]
         public int Model { get; set; }
 
         [Display(Name = "Placa")]
-        //[RegularExpression(@"[a-zA-Z]{3}[0-9]{2}[a-zA-Z0-9]", ErrorMessage = "Formato de placa incorrecto.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [StringLength(7, MinimumLength = 3, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string Plaque { get; set; }
 
-        //[Display(Name = "VIN Number")]        
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        //[StringLength(13, MinimumLength = 13, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
-        //public string VinNumber { get; set; }
-
-        [Display(Name = "Línea")]
+        [Display(Name = "Modelo")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Line { get; set; }
