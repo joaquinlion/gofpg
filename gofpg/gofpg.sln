@@ -3,9 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoFpg.Commons", "GoFpg.Commons\GoFpg.Commons.csproj", "{1A4B9982-D276-4720-994C-8959F4E8BCE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFpg.Commons", "GoFpg.Commons\GoFpg.Commons.csproj", "{1A4B9982-D276-4720-994C-8959F4E8BCE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoFpg.API", "GoFpg.API\GoFpg.API.csproj", "{ECF474E5-49AB-4DDD-BEE8-CAF0FDD5CE67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoFpg.API", "GoFpg.API\GoFpg.API.csproj", "{ECF474E5-49AB-4DDD-BEE8-CAF0FDD5CE67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{57ECBCC3-5D28-4D86-B86A-29B996B60804}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GoFpg.API.Data.Entities
@@ -15,7 +16,8 @@ namespace GoFpg.API.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Description { get; set; }
 
+        [JsonIgnore]
+        public ICollection<User> Users { get; set; }
 
-        
     }
 }
