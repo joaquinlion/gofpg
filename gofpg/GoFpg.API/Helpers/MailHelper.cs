@@ -1,4 +1,4 @@
-﻿using GoFpg.Commons.Models;
+﻿using gofpg.Common.Models;
 using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using MimeKit;
@@ -36,7 +36,7 @@ namespace GoFpg.API.Helpers
 
                 using (SmtpClient client = new SmtpClient())
                 {
-                    client.Connect(smtp, int.Parse(port), false);
+                    client.Connect(smtp, int.Parse(port), true);
                     client.Authenticate(from, password);
                     client.Send(message);
                     client.Disconnect(true);

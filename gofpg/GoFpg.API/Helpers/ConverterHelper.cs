@@ -45,6 +45,59 @@ namespace GoFpg.API.Helpers
             };
         }
 
+        //public async Task<InsuranceClaim> ToMinInsuranceClaimAsync(NewClaimViewModel newClaimViewModel, bool isNew)
+        //{
+        //    return new InsuranceClaim
+        //    {
+        //        DateOfLoss = newClaimViewModel.DateOfLoss,
+        //        Damage = newClaimViewModel.Damage,
+        //        ScheduleDate = newClaimViewModel.ScheduleDate,
+        //        Id = isNew ? 0 : newClaimViewModel.Id,
+
+        //    };
+        //}
+
+        //public async Task<User> ToMinUserAsync(NewClaimViewModel newClaimViewModel, bool isNew)
+        //{
+        //    return new User
+        //    {
+        //        Address = newClaimViewModel.Address,
+        //        Email = newClaimViewModel.Email,
+        //        FirstName = newClaimViewModel.FirstName,
+        //        Id = newClaimViewModel.Id,
+        //        LastName = newClaimViewModel.LastName,
+        //        PhoneNumber = newClaimViewModel.PhoneNumber,
+        //        UserName = newClaimViewModel.Email,
+        //        UserType = UserType.User,
+        //    };
+        //}
+
+        //public async Task<Vehicle> ToMinVehicleAsync(NewClaimViewModel newClaimViewModel, bool isNew)
+        //{
+        //    return new Vehicle
+        //    {
+        //        //Id = isNew ? Guid.NewGuid() : newClaimViewModel.Id,
+        //        VinNumber = newClaimViewModel.VinNumber.ToUpper(),
+        //    };
+        //}
+
+        public NewClaimViewModel ToNewClaimViewModel(InsuranceClaim insuranceClaim, User user)
+        {
+            return new NewClaimViewModel
+            {
+                Id = insuranceClaim.Id,
+                DateOfLoss = insuranceClaim.DateOfLoss,
+                Damage = insuranceClaim.Damage,
+                ScheduleDate = insuranceClaim.ScheduleDate,
+                Email = user.Email,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                InsuranceCo = insuranceClaim.InsuranceCo,
+                PolicyNumber = insuranceClaim.PolicyNumber,
+            };
+        }
+
         public async Task<User> ToUserAsync(UserViewModel model, Guid imageId, bool isNew)
         {
             return new User
@@ -54,7 +107,7 @@ namespace GoFpg.API.Helpers
                 DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId),
                 Email = model.Email,
                 FirstName = model.FirstName,
-                Id = isNew ? Guid.NewGuid().ToString() : model.Id,
+                Id = model.Id,
                 ImageId = imageId,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
@@ -69,7 +122,7 @@ namespace GoFpg.API.Helpers
             {
                 Address = user.Address,
                 Document = user.Document,
-                DocumentTypeId = user.DocumentType.Id,
+                //DocumentTypeId = user.DocumentType.Id,
                 DocumentTypes = _combosHelper.GetComboDocumentTypes(),
                 Email = user.Email,
                 FirstName = user.FirstName,

@@ -11,7 +11,7 @@ namespace GoFpg.API.Models
 {
     public class UserViewModel 
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
@@ -30,7 +30,7 @@ namespace GoFpg.API.Models
 
         [Display(Name = "Documento")]
         [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Document { get; set; }
 
         [Display(Name = "Dirección")]
@@ -52,7 +52,7 @@ namespace GoFpg.API.Models
 
         [Display(Name = "Tipo de documento")]
         [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int DocumentTypeId { get; set; }
 
         public IEnumerable<SelectListItem> DocumentTypes { get; set; }

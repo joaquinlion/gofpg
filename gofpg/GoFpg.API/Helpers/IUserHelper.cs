@@ -12,7 +12,7 @@ namespace GoFpg.API.Helpers
     {
         Task<User> GetUserAsync(string email);
 
-        Task<User> GetUserAsync(Guid id);
+        Task<User> GetUserAsync(int id);
 
         Task<IdentityResult> AddUserAsync(User user, string password);
 

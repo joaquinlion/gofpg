@@ -8,8 +8,8 @@ namespace GoFpg.API.Models
 {
     public class RecoverPasswordViewModel
     {
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
+        [Required(ErrorMessage = "{0} field is required.")]
+        [EmailAddress(ErrorMessage = "Please introduce a valid Email.")]
         public string Email { get; set; }
     }
 }

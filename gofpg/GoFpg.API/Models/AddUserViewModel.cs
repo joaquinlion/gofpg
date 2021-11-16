@@ -9,21 +9,21 @@ namespace GoFpg.API.Models
     public class AddUserViewModel : EditUserViewModel
     {
         [Display(Name = "Email")]
-        [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Please introduce a valid Email.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Username { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        [MinLength(6, ErrorMessage = "El campo {0} debe tener una longitud mínima de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Password")]
+        [MinLength(6, ErrorMessage = "{0} must have at least {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Password { get; set; }
 
-        [Display(Name = "Confirmación de contraseña")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Confirm Password")]
+        [Required(ErrorMessage = "{0} field is required.")]
         [DataType(DataType.Password)]
-        [MinLength(6, ErrorMessage = "El campo {0} debe tener una longitud mínima de {1} carácteres.")]
-        [Compare("Password", ErrorMessage = "La contraseña y confirmacíón de contraseña no son iguales.")]
+        [MinLength(6, ErrorMessage = "{0} must have at least {1} characters.")]
+        [Compare("Password", ErrorMessage = "The password fields do not match each other.")]
         public string PasswordConfirm { get; set; }
     }
 }

@@ -1,0 +1,66 @@
+﻿@model GoFpg.API.Data.Entities.InsuranceClaim
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>InsuranceClaim</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DateOfLoss" class="control-label"></label>
+                <input asp-for="DateOfLoss" class="form-control" />
+                <span asp-validation-for="DateOfLoss" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Damage" class="control-label"></label>
+                <input asp-for="Damage" class="form-control" />
+                <span asp-validation-for="Damage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduleDate" class="control-label"></label>
+                <input asp-for="ScheduleDate" class="form-control" />
+                <span asp-validation-for="ScheduleDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsuranceCo" class="control-label"></label>
+                <input asp-for="InsuranceCo" class="form-control" />
+                <span asp-validation-for="InsuranceCo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyNumber" class="control-label"></label>
+                <input asp-for="PolicyNumber" class="form-control" />
+                <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VINImageId" class="control-label"></label>
+                <input asp-for="VINImageId" class="form-control" />
+                <span asp-validation-for="VINImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DLImageId" class="control-label"></label>
+                <input asp-for="DLImageId" class="form-control" />
+                <span asp-validation-for="DLImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InsCardImageId" class="control-label"></label>
+                <input asp-for="InsCardImageId" class="form-control" />
+                <span asp-validation-for="InsCardImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

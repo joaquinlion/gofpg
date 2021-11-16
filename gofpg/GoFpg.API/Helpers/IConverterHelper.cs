@@ -20,5 +20,11 @@ namespace GoFpg.API.Helpers
         Task<Detail> ToDetailAsync(DetailViewModel model, bool isNew);
 
         DetailViewModel ToDetailViewModel(Detail detail);
+
+        //Task<User> ToMinUserAsync(NewClaimViewModel newClaimViewModel, bool isNew);
+        //Task<Vehicle> ToMinVehicleAsync(NewClaimViewModel newClaimViewModel, bool isNew);
+        //Task<InsuranceClaim> ToMinInsuranceClaimAsync(NewClaimViewModel newClaimViewModel, bool isNew);
+
+        NewClaimViewModel ToNewClaimViewModel(InsuranceClaim insuranceClaim, User user);
     }
 }

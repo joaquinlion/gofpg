@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GoFpg.API.Data.Entities
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
         [Display(Name = "Nombres")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
@@ -20,17 +20,33 @@ namespace GoFpg.API.Data.Entities
         public string LastName { get; set; }
 
         [Display(Name = "Tipo de documento")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DocumentType DocumentType { get; set; }
 
         [Display(Name = "Documento")]
         [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Document { get; set; }
 
-        [Display(Name = "Dirección")]
-        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Display(Name = "Street Adress")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string Address { get; set; }
+
+        [Display(Name = "Apt, Ste, #")]
+        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "City")]
+        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string City { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string Zip { get; set; }
+
+        [Display(Name = "State")]
+        [MaxLength(16, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string State { get; set; }
 
         [Display(Name = "Foto")]
         public Guid ImageId { get; set; }

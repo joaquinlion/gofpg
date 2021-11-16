@@ -1,8 +1,8 @@
-﻿using GoFpg.API.Data;
+﻿using gofpg.Common.Models;
+using GoFpg.API.Data;
 using GoFpg.API.Data.Entities;
 using GoFpg.API.Helpers;
 using GoFpg.API.Models;
-using GoFpg.Commons.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -114,7 +114,7 @@ namespace GoFpg.API.Controllers
                     $"por favor hacer clic en el siguiente enlace: </br></br><a href = \"{tokenLink}\">Confirmar Email</a>");
                 if (response.IsSuccess)
                 {
-                    ViewBag.Message = "Las instrucciones para habilitar su cuenta han sido enviadas al correo.";
+                    ViewBag.Message = "A has been sent to the email address provided for account confirmation.";
                     return View(model);
                 }
 
@@ -209,14 +209,14 @@ namespace GoFpg.API.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        public async Task<IActionResult> ConfirmEmail(int userId, string token)
         {
-            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            if ((userId) <1 || string.IsNullOrEmpty(token))
             {
                 return NotFound();
             }
 
-            User user = await _userHelper.GetUserAsync(new Guid(userId));
+            User user = await _userHelper.GetUserAsync(userId);
             if (user == null)
             {
                 return NotFound();
@@ -244,7 +244,7 @@ namespace GoFpg.API.Controllers
                 User user = await _userHelper.GetUserAsync(model.Email);
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "El correo ingresado no corresponde a ningún usuario.");
+                    ModelState.AddModelError(string.Empty, "The Email you provided is not on our records.");
                     return View(model);
                 }
 

@@ -11,11 +11,11 @@ namespace GoFpg.API.Helpers
     public class UserHelper : IUserHelper
     {
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly RoleManager<UserRole> _roleManager;
         private readonly DataContext _context;
         private readonly SignInManager<User> _signInManager;
 
-        public UserHelper(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, DataContext context, SignInManager<User> signInManager)
+        public UserHelper(UserManager<User> userManager, RoleManager<UserRole> roleManager, DataContext context, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -70,7 +70,7 @@ namespace GoFpg.API.Helpers
             bool roleExists = await _roleManager.RoleExistsAsync(roleName);
             if (!roleExists)
             {
-                await _roleManager.CreateAsync(new IdentityRole { Name = roleName });
+                await _roleManager.CreateAsync(new UserRole { Name = roleName });
             }
         }
 
@@ -101,7 +101,7 @@ namespace GoFpg.API.Helpers
                 .FirstOrDefaultAsync(x => x.Email == email);
         }
 
-        public async Task<User> GetUserAsync(Guid id)
+        public async Task<User> GetUserAsync(int id)
         {
             return await _context.Users
                 .Include(x => x.DocumentType)
@@ -110,7 +110,7 @@ namespace GoFpg.API.Helpers
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.Histories)
                 .ThenInclude(x => x.Details)
-                .FirstOrDefaultAsync(x => x.Id == id.ToString());
+                .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<bool> IsUserInRoleAsync(User user, string roleName)

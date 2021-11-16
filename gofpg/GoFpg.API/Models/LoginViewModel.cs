@@ -9,17 +9,17 @@ namespace GoFpg.API.Models
     public class LoginViewModel
     {
         [Display(Name = "Email")]
-        [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [EmailAddress(ErrorMessage = "Please introduce a valid Email.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Username { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        [MinLength(6, ErrorMessage = "El campo {0} debe tener una longitud mínima de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Password")]
+        [MinLength(6, ErrorMessage = "{0} field must have at least {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Password { get; set; }
 
-        [Display(Name = "Recordarme")]
+        [Display(Name = "Remember me")]
         public bool RememberMe { get; set; }
     }
 }

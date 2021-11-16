@@ -52,7 +52,7 @@ namespace GoFpg.API.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Color { get; set; }
 
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         [Display(Name = "Observación")]
         [DataType(DataType.MultilineText)]

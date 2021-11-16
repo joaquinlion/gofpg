@@ -10,49 +10,49 @@ namespace GoFpg.API.Models
 {
     public class EditUserViewModel
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
 
-        [Display(Name = "Nombres")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Name")]
+        [MaxLength(50, ErrorMessage = "{0} field can not be more than {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Apellidos")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Last Name")]
+        [MaxLength(50, ErrorMessage = "{0} field can not be more than {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string LastName { get; set; }
 
-        [Display(Name = "Tipo de documento")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Id type")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select Id. type.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public int DocumentTypeId { get; set; }
 
         public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
-        [Display(Name = "Documento")]
-        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Id number")]
+        [MaxLength(20, ErrorMessage = "{0} field can not be more than {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Document { get; set; }
 
-        [Display(Name = "Dirección")]
-        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Address")]
+        [MaxLength(100, ErrorMessage = "{0} field can not be more than {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string Address { get; set; }
 
-        [Display(Name = "Teléfono")]
-        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "Telephone")]
+        [MaxLength(10, ErrorMessage = "{0} field can not be more than {1} characters.")]
+        [Required(ErrorMessage = "{0} field is required.")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Foto")]
+        [Display(Name = "User Image")]
         public Guid ImageId { get; set; }
 
-        [Display(Name = "Foto")]
+        [Display(Name = "User Image")]
         public string ImageFullPath => ImageId == Guid.Empty
             ? $"https://localhost:44320/images/noimage.png"
             : $"https://fpglass.blob.core.windows.net/users/{ImageId}";
 
-        [Display(Name = "Foto")]
+        [Display(Name = "User Image Image")]
         public IFormFile ImageFile { get; set; }
     }
 }

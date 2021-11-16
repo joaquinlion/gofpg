@@ -66,7 +66,7 @@ namespace GoFpg.API.Helpers
 
             list.Insert(0, new SelectListItem
             {
-                Text = "[Seleccione un tipo de documento...]",
+                Text = "[Selet Id. type...]",
                 Value = "0"
             });
 

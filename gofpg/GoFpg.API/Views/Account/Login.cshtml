@@ -1,7 +1,7 @@
 ﻿@model GoFpg.API.Models.LoginViewModel
 @{ ViewData["Title"] = "Login"; }
 
-<h2>Inicio de Sesión</h2>
+<h2>Log In</h2>
 
 <div class="row">
     <div class="col-md-6">
@@ -30,10 +30,10 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Iniciar Sesión" class="btn btn-primary" />
-                <a asp-action="Register" class="btn btn-secondary">Registrar Nuevo Usuario</a>
+                <input type="submit" value="Log In" class="btn btn-primary" />
+                <a asp-action="Register" class="btn btn-secondary">Register</a>
                 <hr />
-                <a asp-action="RecoverPassword" class="btn btn-link">¿Olvidaste tu contraseña?</a>
+                <a asp-action="RecoverPassword" class="btn btn-link">Password Recovery</a>
             </div>
         </form>
     </div>

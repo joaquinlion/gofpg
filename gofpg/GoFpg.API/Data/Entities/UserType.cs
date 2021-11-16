@@ -8,6 +8,8 @@ namespace GoFpg.API.Data.Entities
     public enum UserType
     {
         Admin,
-        User
+        Sales,
+        User,
+
     }
 }

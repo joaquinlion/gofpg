@@ -65,7 +65,7 @@ namespace GoFpg.API.Controllers
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, user.UserType.ToString());
 
-                
+
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,14 +74,14 @@ namespace GoFpg.API.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (id < 0)
             {
                 return NotFound();
             }
 
-            User user = await _userHelper.GetUserAsync(Guid.Parse(id));
+            User user = await _userHelper.GetUserAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -112,14 +112,14 @@ namespace GoFpg.API.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (!(id > 0))
             {
                 return NotFound();
             }
 
-            User user = await _userHelper.GetUserAsync(Guid.Parse(id));
+            User user = await _userHelper.GetUserAsync(id);
             if (user == null)
             {
                 return NotFound();
@@ -130,9 +130,9 @@ namespace GoFpg.API.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (id == null)
             {
                 return NotFound();
             }
@@ -156,9 +156,9 @@ namespace GoFpg.API.Controllers
             return View(user);
         }
 
-        public async Task<IActionResult> AddVehicle(string id)
+        public async Task<IActionResult> AddVehicle(int? id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (id == null)
             {
                 return NotFound();
             }
@@ -679,6 +679,6 @@ namespace GoFpg.API.Controllers
     }
 }
 
-    
-    
+
+
 
