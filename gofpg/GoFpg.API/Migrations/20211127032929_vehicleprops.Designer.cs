@@ -10,71 +10,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210929201404_changesrequired")]
-    partial class changesrequired
+    [Migration("20211127032929_vehicleprops")]
+    partial class vehicleprops
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.10")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.Brand", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Description")
-                        .IsUnique();
-
-                    b.ToTable("Brands");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.Dealership", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Dealer")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("PartsPhone")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("ServicePhone")
-                        .IsRequired()
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Dealer")
-                        .IsUnique();
-
-                    b.ToTable("Dealerships");
-                });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.Detail", b =>
                 {
@@ -87,7 +32,7 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("LaborPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.Property<int>("ProcedureId")
                         .HasColumnType("int");
@@ -96,7 +41,7 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("SparePartsPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 
@@ -105,26 +50,6 @@ namespace GoFpg.API.Migrations
                     b.HasIndex("ProcedureId");
 
                     b.ToTable("Details");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.DocumentType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Description")
-                        .IsUnique();
-
-                    b.ToTable("DocumentTypes");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.History", b =>
@@ -143,15 +68,10 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.HasIndex("VehicleId");
 
@@ -164,6 +84,34 @@ namespace GoFpg.API.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AltAddress")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("AltAddress2")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("AltCity")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("AltContactName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("AltPhoneNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("AltState")
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("AltZip")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<Guid>("DLImageId")
                         .HasColumnType("uniqueidentifier");
@@ -182,12 +130,35 @@ namespace GoFpg.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Mileage")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
                     b.Property<string>("PolicyNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RODate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReferralNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Repair")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ScheduleDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Tag")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("VINImageId")
                         .HasColumnType("uniqueidentifier");
@@ -195,10 +166,17 @@ namespace GoFpg.API.Migrations
                     b.Property<int?>("VehicleId")
                         .HasColumnType("int");
 
+                    b.Property<string>("VinNumber")
+                        .IsRequired()
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Id")
                         .IsUnique();
+
+                    b.HasIndex("UserId");
 
                     b.HasIndex("VehicleId");
 
@@ -243,7 +221,7 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 
@@ -255,26 +233,29 @@ namespace GoFpg.API.Migrations
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.User", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
                     b.Property<string>("Address")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Address2")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Document")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int?>("DocumentTypeId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -322,6 +303,10 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("State")
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
@@ -332,9 +317,11 @@ namespace GoFpg.API.Migrations
                     b.Property<int>("UserType")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.Property<string>("Zip")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
-                    b.HasIndex("DocumentTypeId");
+                    b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
@@ -347,6 +334,35 @@ namespace GoFpg.API.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("GoFpg.API.Data.Entities.UserRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedName")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
+
+                    b.ToTable("AspNetRoles");
+                });
+
             modelBuilder.Entity("GoFpg.API.Data.Entities.Vehicle", b =>
                 {
                     b.Property<int>("Id")
@@ -354,50 +370,70 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BrandId")
-                        .HasColumnType("int");
+                    b.Property<string>("BodyClass")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Color")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Line")
+                    b.Property<string>("Doors")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Model")
-                        .HasColumnType("int");
+                    b.Property<string>("LaneDeparture")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("Plaque")
-                        .HasMaxLength(7)
-                        .HasColumnType("nvarchar(7)");
+                    b.Property<string>("LaneKeep")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("Make")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Model")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
+                    b.Property<string>("Tag")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
-                    b.Property<int?>("VehicleTypeId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("VehicleType")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("VinNumber")
                         .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
+                        .HasMaxLength(17)
+                        .HasColumnType("nvarchar(17)");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("Plaque")
-                        .IsUnique()
-                        .HasFilter("[Plaque] IS NOT NULL");
+                    b.HasIndex("Tag")
+                        .IsUnique();
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("VehicleTypeId");
 
                     b.ToTable("Vehicles");
                 });
@@ -422,37 +458,32 @@ namespace GoFpg.API.Migrations
                     b.ToTable("VehiclePhotos");
                 });
 
-            modelBuilder.Entity("GoFpg.API.Data.Entities.VehicleType", b =>
+            modelBuilder.Entity("GoFpg.API.Models.NewClaimViewModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Description")
-                        .IsUnique();
-
-                    b.ToTable("VehicleTypes");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Models.NewClaimViewModel", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("Address")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<Guid>("DLImageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Address2")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("AltContactName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<string>("AltPhoneNumber")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Damage")
                         .IsRequired()
@@ -470,9 +501,6 @@ namespace GoFpg.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<Guid>("InsCardImageId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("InsuranceCo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -482,7 +510,13 @@ namespace GoFpg.API.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("Mileage")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
@@ -490,50 +524,43 @@ namespace GoFpg.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("RODate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ReferralNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Repair")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("ScheduleDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("VINImageId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("State")
+                        .HasMaxLength(16)
+                        .HasColumnType("nvarchar(16)");
+
+                    b.Property<string>("Tag")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("VinNumber")
                         .IsRequired()
                         .HasMaxLength(13)
                         .HasColumnType("nvarchar(13)");
 
+                    b.Property<string>("Zip")
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
+
                     b.HasKey("Id");
 
                     b.ToTable("NewClaimViewModel");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -546,9 +573,8 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -557,7 +583,7 @@ namespace GoFpg.API.Migrations
                     b.ToTable("AspNetRoleClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -570,9 +596,8 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("ClaimValue")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -581,7 +606,7 @@ namespace GoFpg.API.Migrations
                     b.ToTable("AspNetUserClaims");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -592,9 +617,8 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -603,13 +627,13 @@ namespace GoFpg.API.Migrations
                     b.ToTable("AspNetUserLogins");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -618,10 +642,10 @@ namespace GoFpg.API.Migrations
                     b.ToTable("AspNetUserRoles");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LoginProvider")
                         .HasColumnType("nvarchar(450)");
@@ -658,60 +682,39 @@ namespace GoFpg.API.Migrations
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.History", b =>
                 {
-                    b.HasOne("GoFpg.API.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
                     b.HasOne("GoFpg.API.Data.Entities.Vehicle", "Vehicle")
                         .WithMany("Histories")
                         .HasForeignKey("VehicleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
-
                     b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.InsuranceClaim", b =>
                 {
-                    b.HasOne("GoFpg.API.Data.Entities.Vehicle", "Vehicle")
-                        .WithMany()
+                    b.HasOne("GoFpg.API.Data.Entities.User", "User")
+                        .WithMany("InsuranceClaims")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("GoFpg.API.Data.Entities.Vehicle", null)
+                        .WithMany("InsuranceClaims")
                         .HasForeignKey("VehicleId");
 
-                    b.Navigation("Vehicle");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.User", b =>
-                {
-                    b.HasOne("GoFpg.API.Data.Entities.DocumentType", "DocumentType")
-                        .WithMany("Users")
-                        .HasForeignKey("DocumentTypeId");
-
-                    b.Navigation("DocumentType");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.Vehicle", b =>
                 {
-                    b.HasOne("GoFpg.API.Data.Entities.Brand", "Brand")
-                        .WithMany("Vehicles")
-                        .HasForeignKey("BrandId");
-
                     b.HasOne("GoFpg.API.Data.Entities.User", "User")
                         .WithMany("Vehicles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GoFpg.API.Data.Entities.VehicleType", "VehicleType")
-                        .WithMany("Vehicles")
-                        .HasForeignKey("VehicleTypeId");
-
-                    b.Navigation("Brand");
-
                     b.Navigation("User");
-
-                    b.Navigation("VehicleType");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.VehiclePhoto", b =>
@@ -725,16 +728,16 @@ namespace GoFpg.API.Migrations
                     b.Navigation("Vehicle");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("GoFpg.API.Data.Entities.UserRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.HasOne("GoFpg.API.Data.Entities.User", null)
                         .WithMany()
@@ -743,7 +746,7 @@ namespace GoFpg.API.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<int>", b =>
                 {
                     b.HasOne("GoFpg.API.Data.Entities.User", null)
                         .WithMany()
@@ -752,9 +755,9 @@ namespace GoFpg.API.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<int>", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("GoFpg.API.Data.Entities.UserRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -767,23 +770,13 @@ namespace GoFpg.API.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
+            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<int>", b =>
                 {
                     b.HasOne("GoFpg.API.Data.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.Brand", b =>
-                {
-                    b.Navigation("Vehicles");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.DocumentType", b =>
-                {
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.History", b =>
@@ -798,6 +791,8 @@ namespace GoFpg.API.Migrations
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.User", b =>
                 {
+                    b.Navigation("InsuranceClaims");
+
                     b.Navigation("Vehicles");
                 });
 
@@ -805,12 +800,9 @@ namespace GoFpg.API.Migrations
                 {
                     b.Navigation("Histories");
 
-                    b.Navigation("VehiclePhotos");
-                });
+                    b.Navigation("InsuranceClaims");
 
-            modelBuilder.Entity("GoFpg.API.Data.Entities.VehicleType", b =>
-                {
-                    b.Navigation("Vehicles");
+                    b.Navigation("VehiclePhotos");
                 });
 #pragma warning restore 612, 618
         }

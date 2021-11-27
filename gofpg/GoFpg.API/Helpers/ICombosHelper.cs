@@ -8,12 +8,12 @@ namespace GoFpg.API.Helpers
 {
     public interface ICombosHelper
     {
-        IEnumerable<SelectListItem> GetComboDocumentTypes();
+        //IEnumerable<SelectListItem> GetComboDocumentTypes();
 
         IEnumerable<SelectListItem> GetComboProcedures();
 
-        IEnumerable<SelectListItem> GetComboVehicleTypes();
+        //IEnumerable<SelectListItem> GetComboVehicleTypes();
 
-        IEnumerable<SelectListItem> GetComboBrands();
+        //IEnumerable<SelectListItem> GetComboBrands();
     }
 }

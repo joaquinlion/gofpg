@@ -4,31 +4,61 @@
     <div class="col-md-6">
         <div class="form-group">
             <label asp-for="VinNumber" class="control-label"></label>
-            <input asp-for="VinNumber" class="form-control" />
+            <input asp-for="VinNumber" onkeyup="vinDecode()" id="Vinnum" class="form-control" style="text-transform:uppercase" />
             <span asp-validation-for="VinNumber" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="VehicleTypeId" class="control-label"></label>
-            <select asp-for="VehicleTypeId" asp-items="Model.VehicleTypes" class="form-control"></select>
-            <span asp-validation-for="VehicleTypeId" class="text-danger"></span>
+            <label asp-for="Year" class="control-label"></label>
+            <textarea asp-for="Year" class="control-label"></textarea>
+            <input asp-for="Year" class="form-control" />
+            <span asp-validation-for="Year" class="text-danger"></span>
         </div>
-
         <div class="form-group">
-            <label asp-for="BrandId" class="control-label"></label>
-            <select asp-for="BrandId" asp-items="Model.Brands" class="form-control"></select>
-            <span asp-validation-for="BrandId" class="text-danger"></span>
+            <label asp-for="Make" class="control-label"></label>
+            <textarea asp-for="Make" class="control-label"></textarea>
+            <input asp-for="Make" class="form-control" />
+            <span asp-validation-for="Make" class="text-danger"></span>
         </div>
-
         <div class="form-group">
             <label asp-for="Model" class="control-label"></label>
+            <textarea asp-for="Model" class="control-label"></textarea>
             <input asp-for="Model" class="form-control" />
             <span asp-validation-for="Model" class="text-danger"></span>
         </div>
-
         <div class="form-group">
-            <label asp-for="Line" class="control-label"></label>
-            <input asp-for="Line" class="form-control" />
-            <span asp-validation-for="Line" class="text-danger"></span>
+            <label asp-for="Doors" class="control-label"></label>
+            <textarea asp-for="Doors" class="control-label"></textarea>
+            <input asp-for="Doors" class="form-control" />
+            <span asp-validation-for="Doors" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BodyClass" class="control-label"></label>
+            <textarea asp-for="BodyClass" class="control-label"></textarea>
+            <input asp-for="BodyClass" class="form-control" />
+            <span asp-validation-for="BodyClass" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="VehicleType" class="control-label"></label>
+            <textarea asp-for="VehicleType" class="control-label"></textarea>
+            <input asp-for="VehicleType" class="form-control" />
+            <span asp-validation-for="VehicleType" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LaneDeparture" class="control-label"></label>
+            <textarea asp-for="LaneDeparture" class="control-label"></textarea>
+            <input asp-for="LaneDeparture" class="form-control" />
+            <span asp-validation-for="LaneDeparture" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LaneKeep" class="control-label"></label>
+            <textarea asp-for="LaneKeep" class="control-label"></textarea>
+            <input asp-for="LaneKeep" class="form-control" />
+            <span asp-validation-for="LaneKeep" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ErrorCode" class="control-label"></label>
+            <textarea asp-for="ErrorCode" class="control-label"></textarea>
+            <span asp-validation-for="ErrorCode" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-6">
@@ -39,11 +69,10 @@
         </div>
 
         <div class="form-group">
-            <label asp-for="Plaque" class="control-label"></label>
-            <input asp-for="Plaque" class="form-control">
-            <span asp-validation-for="Plaque" class="text-danger"></span>
+            <label asp-for="Tag" class="control-label"></label>
+            <input asp-for="Tag" class="form-control">
+            <span asp-validation-for="Tag" class="text-danger"></span>
         </div>
-
         <div class="form-group">
             <label asp-for="Remarks" class="control-label"></label>
             <textarea asp-for="Remarks" class="form-control"></textarea>
@@ -51,3 +80,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function vinDecode() {
+        $.post('@Url.Action("VinDecode", "User")'), {id:VinNum } function(data{ });
+    }
+</script>
+

@@ -1,0 +1,177 @@
+﻿@model GoFpg.API.Data.Entities.InsuranceClaim
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Repair Order</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.User.CustomerName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.User.CustomerName)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.User.PhoneNumber)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.User.PhoneNumber)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.User.CustoAddress)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.User.CustoAddress)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.User.Email)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.User.Email)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.InsuranceCo)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.InsuranceCo)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.PolicyNumber)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.PolicyNumber)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.VINImageId)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.VINImageId)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DLImageId)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DLImageId)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.InsCardImageId)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.InsCardImageId)
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <dl class="row">
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.RODate)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.RODate)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.VinNumber)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.VinNumber)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Tag)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Tag)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Mileage)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Mileage)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Damage)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Damage)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.DateOfLoss)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.DateOfLoss)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.Repair)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.Repair)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.ReferralNumber)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ReferralNumber)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.ScheduleDate)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.ScheduleDate)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltContactName)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltContactName)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltPhoneNumber)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltPhoneNumber)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltAddress)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltAddress)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltAddress2)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltAddress2)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltCity)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltCity)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltZip)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltZip)
+                </dd>
+                <dt class="col-sm-4">
+                    @Html.DisplayNameFor(model => model.AltState)
+                </dt>
+                <dd class="col-sm-8">
+                    @Html.DisplayFor(model => model.AltState)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>

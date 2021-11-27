@@ -13,10 +13,19 @@
     <thead>
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.RONumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RODate)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.DateOfLoss)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Damage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Repair)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ScheduleDate)
@@ -26,6 +35,39 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PolicyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VinNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tag)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferralNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltAddress2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltZip)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltState)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AltPhoneNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VINImageId)
@@ -43,10 +85,19 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.RONumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RODate)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.DateOfLoss)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Damage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Repair)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ScheduleDate)
@@ -56,6 +107,39 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PolicyNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VinNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tag)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferralNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltAddress2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltZip)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltState)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AltPhoneNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VINImageId)

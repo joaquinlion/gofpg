@@ -18,34 +18,22 @@
                     @Html.DisplayFor(model => model.VinNumber)
                 </dd>
                 <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.VehicleType.Description)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.VehicleType.Description)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Brand.Description)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Brand.Description)
-                </dd>
-                <dt class="col-sm-3">
                     @Html.DisplayNameFor(model => model.Model)
                 </dt>
                 <dd class="col-sm-9">
                     @Html.DisplayFor(model => model.Model)
                 </dd>
                 <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Plaque)
+                    @Html.DisplayNameFor(model => model.Tag)
                 </dt>
                 <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Plaque)
+                    @Html.DisplayFor(model => model.Tag)
                 </dd>
                 <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Line)
+                    @Html.DisplayNameFor(model => model.Year)
                 </dt>
                 <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Line)
+                    @Html.DisplayFor(model => model.Year)
                 </dd>
                 <dt class="col-sm-3">
                     @Html.DisplayNameFor(model => model.Remarks)
@@ -80,9 +68,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().DateLocal)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().User.FullName)
-                            </th>
+                            
                             <th>
                                 @Html.DisplayNameFor(model => model.Histories.FirstOrDefault().Mileage)
                             </th>
@@ -111,9 +97,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DateLocal)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.FullName)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Mileage)
                 </td>

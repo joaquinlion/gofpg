@@ -1,6 +1,7 @@
 ﻿using GoFpg.API.Data;
 using GoFpg.API.Data.Entities;
 using GoFpg.API.Helpers;
+using GoFpg.API.Helpers.VINdecode;
 using GoFpg.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,7 +34,7 @@ namespace GoFpg.API.Controllers
         public async Task<IActionResult> Index()
         {
             return View(await _context.Users
-                .Include(x => x.DocumentType)
+                //.Include(x => x.DocumentType)
                 .Include(x => x.Vehicles)
                 .Where(x => x.UserType == UserType.User)
                 .ToListAsync());
@@ -42,7 +43,7 @@ namespace GoFpg.API.Controllers
         {
             UserViewModel model = new UserViewModel
             {
-                DocumentTypes = _combosHelper.GetComboDocumentTypes()
+                //DocumentTypes = _combosHelper.GetComboDocumentTypes()
             };
 
             return View(model);
@@ -70,7 +71,7 @@ namespace GoFpg.API.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
+            //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
 
@@ -108,7 +109,7 @@ namespace GoFpg.API.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
+            //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
 
@@ -138,15 +139,14 @@ namespace GoFpg.API.Controllers
             }
 
             User user = await _context.Users
-                .Include(x => x.DocumentType)
-                .Include(x => x.Vehicles)
-                .ThenInclude(x => x.Brand)
-                .Include(x => x.Vehicles)
-                .ThenInclude(x => x.VehicleType)
+                //.Include(x => x.DocumentType)
+
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.VehiclePhotos)
+
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.Histories)
+
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (user == null)
             {
@@ -173,9 +173,9 @@ namespace GoFpg.API.Controllers
 
             VehicleViewModel model = new VehicleViewModel
             {
-                Brands = _combosHelper.GetComboBrands(),
+                //Brands = _combosHelper.GetComboBrands(),
                 UserId = user.Id,
-                VehicleTypes = _combosHelper.GetComboVehicleTypes()
+                //VehicleTypes = _combosHelper.GetComboVehicleTypes()
             };
 
             return View(model);
@@ -233,8 +233,8 @@ namespace GoFpg.API.Controllers
                 ModelState.AddModelError(string.Empty, exception.Message);
             }
 
-            vehicleViewModel.Brands = _combosHelper.GetComboBrands();
-            vehicleViewModel.VehicleTypes = _combosHelper.GetComboVehicleTypes();
+            //vehicleViewModel.Brands = _combosHelper.GetComboBrands();
+            //vehicleViewModel.VehicleTypes = _combosHelper.GetComboVehicleTypes();
             return View(vehicleViewModel);
         }
 
@@ -247,8 +247,6 @@ namespace GoFpg.API.Controllers
 
             Vehicle vehicle = await _context.Vehicles
                 .Include(x => x.User)
-                .Include(x => x.Brand)
-                .Include(x => x.VehicleType)
                 .Include(x => x.VehiclePhotos)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (vehicle == null)
@@ -295,8 +293,8 @@ namespace GoFpg.API.Controllers
                 }
             }
 
-            vehicleViewModel.Brands = _combosHelper.GetComboBrands();
-            vehicleViewModel.VehicleTypes = _combosHelper.GetComboVehicleTypes();
+            //vehicleViewModel.Brands = _combosHelper.GetComboBrands();
+            //vehicleViewModel.VehicleTypes = _combosHelper.GetComboVehicleTypes();
             return View(vehicleViewModel);
         }
 
@@ -409,14 +407,12 @@ namespace GoFpg.API.Controllers
 
             Vehicle vehicle = await _context.Vehicles
                 .Include(x => x.User)
-                .Include(x => x.VehicleType)
-                .Include(x => x.Brand)
                 .Include(x => x.VehiclePhotos)
                 .Include(x => x.Histories)
                 .ThenInclude(x => x.Details)
                 .ThenInclude(x => x.Procedure)
                 .Include(x => x.Histories)
-                .ThenInclude(x => x.User)
+                
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (vehicle == null)
             {
@@ -467,7 +463,7 @@ namespace GoFpg.API.Controllers
                     Date = DateTime.UtcNow,
                     Mileage = model.Mileage,
                     Remarks = model.Remarks,
-                    User = user
+                    
                 };
 
                 if (vehicle.Histories == null)
@@ -484,6 +480,29 @@ namespace GoFpg.API.Controllers
             return View(model);
         }
 
+        
+        public async void vinDecode(VehicleViewModel vehicleViewModel)
+        {
+
+            if (vehicleViewModel.VinNumber.Length > 17 || vehicleViewModel.VinNumber.Length < 17)
+            {
+                //resultsBox.Text = "VIN Number Length Is Incorrect";
+            }
+
+            //Send request
+            RootObject myVin = await Decode.GetInfo(vehicleViewModel.VinNumber);
+
+            //Return Result
+            vehicleViewModel.Year = myVin.Results[0].ModelYear;
+            vehicleViewModel.Make = myVin.Results[0].Make;
+            vehicleViewModel.Model = myVin.Results[0].Model;
+            vehicleViewModel.Doors = myVin.Results[0].Doors;
+            vehicleViewModel.BodyClass = myVin.Results[0].BodyClass;
+            vehicleViewModel.VehicleType = myVin.Results[0].VehicleType;
+            vehicleViewModel.LaneDeparture = myVin.Results[0].LaneDepartureWarning;
+            vehicleViewModel.LaneKeep = myVin.Results[0].LaneKeepSystem;
+            vehicleViewModel.ErrorCode = myVin.Results[0].ErrorCode;
+        }
         public async Task<IActionResult> EditHistory(int? id)
         {
             if (id == null)

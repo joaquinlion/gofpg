@@ -22,18 +22,16 @@ namespace GoFpg.API.Data
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-            await CheckVehiclesTypeAsync();
-            await CheckBrandsAsync();
-            await CheckDocumentTypesAsync();
+            
             await CheckProceduresAsync();
             await CheckRolesAsync();
-            await CheckUsersAsync ("1010", "Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", UserType.Admin);
-            await CheckUsersAsync("1020", "Juan", "Zuluaga", "zulu@mail.com", "311 322 4620", "Calle Sol", UserType.User);
-            await CheckUsersAsync("1030", "Joaquin", "Leon", "joaquin@mail.com", "311 322 4620", "Calle Sol", UserType.Sales);
+            await CheckUsersAsync ("Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Admin);
+            await CheckUsersAsync("Juan", "Zuluaga", "zulu@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.User);
+            await CheckUsersAsync("Joaquin", "Leon", "joaquin@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Sales);
 
         }
 
-        private async Task CheckUsersAsync(string document, string firstName, string lastName, string email, string phoneNumber, string address, UserType userType)
+        private async Task CheckUsersAsync(string firstName, string lastName, string email, string phoneNumber, string address, string address2, string zip, string state, UserType userType)
         {
             User user = await _userHelper.GetUserAsync(email);
             if (user == null)
@@ -41,8 +39,11 @@ namespace GoFpg.API.Data
                 user = new User
                 {
                     Address = address,
-                    Document = document,
-                    DocumentType = _context.DocumentTypes.FirstOrDefault(x => x.Description == "Cédula"),
+                    Address2 = address2,
+                    Zip = zip,
+                    State = state,
+                    //Document = document,
+                    
                     Email = email,
                     FirstName = firstName,
                     LastName = lastName,
@@ -78,52 +79,9 @@ namespace GoFpg.API.Data
             }
         }
 
-        private async Task CheckDocumentTypesAsync()
-        {
-            if (!_context.DocumentTypes.Any())
-            {
-                _context.DocumentTypes.Add(new DocumentType { Description = "Drivers License" });
-                _context.DocumentTypes.Add(new DocumentType { Description = "Passport" });
-                await _context.SaveChangesAsync();
-            }
-        }
+        
 
-        private async Task CheckBrandsAsync()
-        {
-            if (!_context.Brands.Any())
-            {               
-                _context.Brands.Add(new Brand { Description = "Toyota" });
-                _context.Brands.Add(new Brand { Description = "Lexus" });
-                _context.Brands.Add(new Brand { Description = "Ford" });
-                _context.Brands.Add(new Brand { Description = "Dodge" });
-                _context.Brands.Add(new Brand { Description = "Jeep" });
-                _context.Brands.Add(new Brand { Description = "Hyundai" });
-                _context.Brands.Add(new Brand { Description = "Kia" });
-                _context.Brands.Add(new Brand { Description = "Honda" });
-                _context.Brands.Add(new Brand { Description = "Acura" });
-                _context.Brands.Add(new Brand { Description = "Nissan" });
-                await _context.SaveChangesAsync();
-            }
-        }
-
-        private async Task CheckVehiclesTypeAsync()
-        {
-            if (!_context.VehicleTypes.Any())
-            {
-                _context.VehicleTypes.Add(new VehicleType { Description = "4 Door Sedan" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "4 Door SUV" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door SUV" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door Hatchback" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door Coupe" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door Convertible" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "4 Door Hatchback" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "4 Door Crew Cab" });
-                
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door Standard Cab" });
-                _context.VehicleTypes.Add(new VehicleType { Description = "2 Door Extended Cab" });
-                await _context.SaveChangesAsync();
-            }
-        }
+        
     }
 }
 

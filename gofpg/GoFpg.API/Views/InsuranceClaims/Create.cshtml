@@ -13,6 +13,16 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="RONumber" class="control-label"></label>
+                <input asp-for="RONumber" class="form-control" />
+                <span asp-validation-for="RONumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RODate" class="control-label"></label>
+                <input asp-for="RODate" class="form-control" />
+                <span asp-validation-for="RODate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DateOfLoss" class="control-label"></label>
                 <input asp-for="DateOfLoss" class="form-control" />
                 <span asp-validation-for="DateOfLoss" class="text-danger"></span>
@@ -21,6 +31,11 @@
                 <label asp-for="Damage" class="control-label"></label>
                 <input asp-for="Damage" class="form-control" />
                 <span asp-validation-for="Damage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Repair" class="control-label"></label>
+                <input asp-for="Repair" class="form-control" />
+                <span asp-validation-for="Repair" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ScheduleDate" class="control-label"></label>
@@ -36,6 +51,61 @@
                 <label asp-for="PolicyNumber" class="control-label"></label>
                 <input asp-for="PolicyNumber" class="form-control" />
                 <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VinNumber" class="control-label"></label>
+                <input asp-for="VinNumber" class="form-control" />
+                <span asp-validation-for="VinNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tag" class="control-label"></label>
+                <input asp-for="Tag" class="form-control" />
+                <span asp-validation-for="Tag" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label"></label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReferralNumber" class="control-label"></label>
+                <input asp-for="ReferralNumber" class="form-control" />
+                <span asp-validation-for="ReferralNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltAddress" class="control-label"></label>
+                <input asp-for="AltAddress" class="form-control" />
+                <span asp-validation-for="AltAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltAddress2" class="control-label"></label>
+                <input asp-for="AltAddress2" class="form-control" />
+                <span asp-validation-for="AltAddress2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltCity" class="control-label"></label>
+                <input asp-for="AltCity" class="form-control" />
+                <span asp-validation-for="AltCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltZip" class="control-label"></label>
+                <input asp-for="AltZip" class="form-control" />
+                <span asp-validation-for="AltZip" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltState" class="control-label"></label>
+                <input asp-for="AltState" class="form-control" />
+                <span asp-validation-for="AltState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltContactName" class="control-label"></label>
+                <input asp-for="AltContactName" class="form-control" />
+                <span asp-validation-for="AltContactName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AltPhoneNumber" class="control-label"></label>
+                <input asp-for="AltPhoneNumber" class="form-control" />
+                <span asp-validation-for="AltPhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="VINImageId" class="control-label"></label>

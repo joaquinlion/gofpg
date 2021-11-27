@@ -73,10 +73,10 @@ namespace GoFpg.API.Controllers
 
         public IActionResult Register()
         {
-            AddUserViewModel model = new AddUserViewModel
-            {
-                DocumentTypes = _combosHelper.GetComboDocumentTypes()
-            };
+            AddUserViewModel model = new AddUserViewModel();
+            //{
+            //    DocumentTypes = _combosHelper.GetComboDocumentTypes()
+            //};
 
             return View(model);
         }
@@ -98,7 +98,7 @@ namespace GoFpg.API.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError(string.Empty, "Este correo ya está siendo usado por otro usuario.");
-                    model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
+                    //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
                     return View(model);
                 }
 
@@ -121,7 +121,7 @@ namespace GoFpg.API.Controllers
                 ModelState.AddModelError(string.Empty, response.Message);
             }
 
-            model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
+            //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
         public async Task<IActionResult> ChangeUser()
@@ -140,9 +140,9 @@ namespace GoFpg.API.Controllers
                 PhoneNumber = user.PhoneNumber,
                 ImageId = user.ImageId,
                 Id = user.Id,
-                Document = user.Document,
-                DocumentTypeId = user.DocumentType.Id,
-                DocumentTypes = _combosHelper.GetComboDocumentTypes(),
+                //Document = user.Document,
+                //DocumentTypeId = user.DocumentType.Id,
+                //DocumentTypes = _combosHelper.GetComboDocumentTypes(),
             };
 
             return View(model);
@@ -167,13 +167,13 @@ namespace GoFpg.API.Controllers
                 user.Address = model.Address;
                 user.PhoneNumber = model.PhoneNumber;
                 user.ImageId = imageId;
-                user.DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId);
-                user.Document = model.Document;
+                //user.DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId);
+                //user.Document = model.Document;
                 await _userHelper.UpdateUserAsync(user);
                 return RedirectToAction("Index", "Home");
             }
 
-            model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
+            //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
 

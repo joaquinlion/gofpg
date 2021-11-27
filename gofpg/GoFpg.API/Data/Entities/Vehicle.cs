@@ -10,47 +10,74 @@ namespace GoFpg.API.Data.Entities
     {
         public int Id { get; set; }
 
-        [Display(Name = "Tipo de vehículo")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public VehicleType VehicleType { get; set; }
-
-        [Display(Name = "Marca")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public Brand Brand { get; set; }
+        [Display(Name = "Make")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string Make { get; set; }
 
         [Display(Name = "VIN Number")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
+        [StringLength(17, MinimumLength = 17, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string VinNumber { get; set; }
 
         [Display(Name = "Year")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [Range(1900, 2100, ErrorMessage = "Valor de módelo no válido.")]
-        public int Model { get; set; }
+        public int Year { get; set; }
 
-        [Display(Name = "Placa")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Display(Name = "License Tag")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [StringLength(7, MinimumLength = 3, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
-        public string Plaque { get; set; }
+        public string Tag { get; set; }
 
-        [Display(Name = "Modelo")]
+        [Display(Name = "Model")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string Line { get; set; }
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string Model { get; set; }
 
         [Display(Name = "Color")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Color { get; set; }
+
+        [Display(Name = "Doors")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string Doors { get; set; }
+
+        [Display(Name = "Body Class")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string BodyClass { get; set; }
+
+        [Display(Name = "Vehicle Type")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string VehicleType { get; set; }
+
+        [Display(Name = "LDWS")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string LaneDeparture { get; set; }
+
+        [Display(Name = "Lane Keep Assist")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string LaneKeep { get; set; }
 
         [Display(Name = "Propietario")]
         [JsonIgnore]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public User User { get; set; }
 
+        public ICollection<InsuranceClaim> InsuranceClaims { get; set; }
+
         [Display(Name = "Observación")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
+
+
+
+
 
         public ICollection<VehiclePhoto> VehiclePhotos { get; set; }
 

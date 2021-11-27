@@ -52,10 +52,9 @@ namespace GoFpg.API.Controllers
         // POST: InsuranceClaims/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //VINImageId,DLImageId,InsCardImageId
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,DateOfLoss,Damage,ScheduleDate,InsuranceCo,PolicyNumber,")] InsuranceClaim insuranceClaim)
+        public async Task<IActionResult> Create([Bind("Id,RONumber,RODate,DateOfLoss,Damage,Repair,ScheduleDate,InsuranceCo,PolicyNumber,VinNumber,Tag,Mileage,ReferralNumber,AltAddress,AltAddress2,AltCity,AltZip,AltState,AltContactName,AltPhoneNumber,VINImageId,DLImageId,InsCardImageId")] InsuranceClaim insuranceClaim)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +86,7 @@ namespace GoFpg.API.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,DateOfLoss,Damage,ScheduleDate,InsuranceCo,PolicyNumber,VINImageId,DLImageId,InsCardImageId")] InsuranceClaim insuranceClaim)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,RONumber,RODate,DateOfLoss,Damage,Repair,ScheduleDate,InsuranceCo,PolicyNumber,VinNumber,Tag,Mileage,ReferralNumber,AltAddress,AltAddress2,AltCity,AltZip,AltState,AltContactName,AltPhoneNumber,VINImageId,DLImageId,InsCardImageId")] InsuranceClaim insuranceClaim)
         {
             if (id != insuranceClaim.Id)
             {

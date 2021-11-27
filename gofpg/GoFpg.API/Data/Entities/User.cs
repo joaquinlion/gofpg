@@ -19,15 +19,6 @@ namespace GoFpg.API.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LastName { get; set; }
 
-        [Display(Name = "Tipo de documento")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public DocumentType DocumentType { get; set; }
-
-        [Display(Name = "Documento")]
-        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string Document { get; set; }
-
         [Display(Name = "Street Adress")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string Address { get; set; }
@@ -62,7 +53,15 @@ namespace GoFpg.API.Data.Entities
         [Display(Name = "Usuario")]
         public string FullName => $"{FirstName} {LastName}";
 
+        [Display(Name = "Customer Name")]
+        public string CustomerName => $"{FirstName} {LastName}";
+
+        [Display(Name = "Customer Address")]
+        public string CustoAddress => $"{Address} {Address2} {City} {State} {Zip}";
+
         public ICollection<Vehicle> Vehicles { get; set; }
+
+        public ICollection<InsuranceClaim> InsuranceClaims { get; set; }
 
         [Display(Name = "# Vehículos")]
         public int VehiclesCount => Vehicles == null ? 0 : Vehicles.Count;

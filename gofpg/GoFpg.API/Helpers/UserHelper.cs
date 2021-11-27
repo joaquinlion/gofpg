@@ -33,13 +33,13 @@ namespace GoFpg.API.Helpers
             User user = new User
             {
                 Address = model.Address,
-                Document = model.Document,
+                //Document = model.Document,
                 Email = model.Username,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 ImageId = imageId,
                 PhoneNumber = model.PhoneNumber,
-                DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId),
+                //DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId),
                 UserName = model.Username,
                 UserType = userType
             };
@@ -92,7 +92,6 @@ namespace GoFpg.API.Helpers
         public async Task<User> GetUserAsync(string email)
         {
             return await _context.Users
-                .Include(x => x.DocumentType)
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.VehiclePhotos)
                 .Include(x => x.Vehicles)
@@ -104,7 +103,6 @@ namespace GoFpg.API.Helpers
         public async Task<User> GetUserAsync(int id)
         {
             return await _context.Users
-                .Include(x => x.DocumentType)
                 .Include(x => x.Vehicles)
                 .ThenInclude(x => x.VehiclePhotos)
                 .Include(x => x.Vehicles)
@@ -133,8 +131,6 @@ namespace GoFpg.API.Helpers
             User currentUser = await GetUserAsync(user.Email);
             currentUser.LastName = user.LastName;
             currentUser.FirstName = user.FirstName;
-            currentUser.DocumentType = user.DocumentType;
-            currentUser.Document = user.Document;
             currentUser.Address = user.Address;
             currentUser.ImageId = user.ImageId;
             currentUser.PhoneNumber = user.PhoneNumber;

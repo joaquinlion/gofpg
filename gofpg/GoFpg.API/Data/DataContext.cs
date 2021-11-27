@@ -16,29 +16,43 @@ namespace GoFpg.API.Data
         {
 
         }
-        public DbSet<VehicleType> VehicleTypes { get; set; }
+        
         public DbSet<Detail> Details { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehiclePhoto> VehiclePhotos { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
-        public DbSet<Brand> Brands { get; set; }
-        public DbSet<DocumentType> DocumentTypes { get; set; }
+        
         public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
-        public DbSet<Dealership> Dealerships { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Vehicle>().HasIndex(x => x.Plaque).IsUnique();
-            modelBuilder.Entity<Brand>().HasIndex(x => x.Description).IsUnique();
-            modelBuilder.Entity<DocumentType>().HasIndex(x => x.Description).IsUnique();
+            modelBuilder.Entity<Vehicle>().HasIndex(x => x.Tag).IsUnique();
+            
             modelBuilder.Entity<Procedure>().HasIndex(x => x.Description).IsUnique();
-            modelBuilder.Entity<VehicleType>().HasIndex(x => x.Description).IsUnique();
             modelBuilder.Entity<InsuranceCompany>().HasIndex(x => x.InsCompany).IsUnique();
             modelBuilder.Entity<InsuranceClaim>().HasIndex(x => x.Id).IsUnique();
-            modelBuilder.Entity<Dealership>().HasIndex(x => x.Dealer).IsUnique();
+            //modelBuilder.Entity<User>(typeBuilder =>
+            //{
+            //    typeBuilder.HasMany(host => host.InsuranceClaims)
+            //        .WithOne(guest => guest.User)
+            //        .HasForeignKey(guest => guest.Id)
+            //        .IsRequired();
+            //});
+            //modelBuilder.Entity<InsuranceClaim>(typeBuilder =>
+            //{
+            //    typeBuilder.HasOne(guest => guest.User)
+            //        .WithMany(host => host.InsuranceClaims)
+            //        .HasForeignKey(guest => guest.Id)
+            //        .IsRequired();
+            //});
+            
+            modelBuilder.Entity<Detail>().Property(p => p.LaborPrice).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<Detail>().Property(p => p.SparePartsPrice).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<Procedure>().Property(p => p.Price).HasColumnType("decimal(18,4)");
 
         }
 

@@ -16,24 +16,24 @@ namespace GoFpg.API.Helpers
             _context = context;
         }
 
-        public IEnumerable<SelectListItem> GetComboBrands()
-        {
-            List<SelectListItem> list = _context.Brands.Select(x => new SelectListItem
-            {
-                Text = x.Description,
-                Value = $"{x.Id}"
-            })
-                .OrderBy(x => x.Text)
-                .ToList();
+        //public IEnumerable<SelectListItem> GetComboBrands()
+        //{
+        //    List<SelectListItem> list = _context.Brands.Select(x => new SelectListItem
+        //    {
+        //        Text = x.Description,
+        //        Value = $"{x.Id}"
+        //    })
+        //        .OrderBy(x => x.Text)
+        //        .ToList();
 
-            list.Insert(0, new SelectListItem
-            {
-                Text = "[Seleccione una marca...]",
-                Value = "0"
-            });
+        //    list.Insert(0, new SelectListItem
+        //    {
+        //        Text = "[Seleccione una marca...]",
+        //        Value = "0"
+        //    });
 
-            return list;
-        }
+        //    return list;
+        //}
 
         public IEnumerable<SelectListItem> GetComboProcedures()
         {
@@ -54,42 +54,44 @@ namespace GoFpg.API.Helpers
             return list;
         }
 
-        public IEnumerable<SelectListItem> GetComboDocumentTypes()
-        {
-            List<SelectListItem> list = _context.DocumentTypes.Select(x => new SelectListItem
-            {
-                Text = x.Description,
-                Value = $"{x.Id}"
-            })
-                .OrderBy(x => x.Text)
-                .ToList();
+        //public IEnumerable<SelectListItem> GetComboDocumentTypes()
+        //{
+        //    List<SelectListItem> list = _context.DocumentTypes.Select(x => new SelectListItem
+        //    {
+        //        Text = x.Description,
+        //        Value = $"{x.Id}"
+        //    })
+        //        .OrderBy(x => x.Text)
+        //        .ToList();
 
-            list.Insert(0, new SelectListItem
-            {
-                Text = "[Selet Id. type...]",
-                Value = "0"
-            });
+        //    list.Insert(0, new SelectListItem
+        //    {
+        //        Text = "[Selet Id. type...]",
+        //        Value = "0"
+        //    });
 
-            return list;
-        }
+        //    return list;
+        //}
 
-        public IEnumerable<SelectListItem> GetComboVehicleTypes()
-        {
-            List<SelectListItem> list = _context.VehicleTypes.Select(x => new SelectListItem
-            {
-                Text = x.Description,
-                Value = $"{x.Id}"
-            })
-                .OrderBy(x => x.Text)
-                .ToList();
+        
 
-            list.Insert(0, new SelectListItem
-            {
-                Text = "[Seleccione un tipo de vehículo...]",
-                Value = "0"
-            });
+        //public IEnumerable<SelectListItem> GetComboVehicleTypes()
+        //{
+        //    //List<SelectListItem> list = _context.VehicleTypes.Select(x => new SelectListItem
+        //    //{
+        //    //    Text = x.Description,
+        //    //    Value = $"{x.Id}"
+        //    //})
+        //    //    .OrderBy(x => x.Text)
+        //    //    .ToList();
 
-            return list;
-        }
+        //    //list.Insert(0, new SelectListItem
+        //    //{
+        //    //    Text = "[Seleccione un tipo de vehículo...]",
+        //    //    Value = "0"
+        //    //});
+
+        //    //return list;
+        //}
     }
 }

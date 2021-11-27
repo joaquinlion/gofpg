@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+<body style="background-color: #575757;">
+    <header style="background-color: #575757;">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light @*bg-white*@ border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" font="FiraSans-UltraItalic.ttf">
-                    <img src="~/Images/logofpg.png" width="160" height="66" />
+                    <img src="~/Images/logofpg1.png" width="160" height="66" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +23,7 @@
                         
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="DocumentTypes" asp-action="Index">Document Types</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Brands" asp-action="Index">Brands</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="VehicleTypes" asp-action="Index">Vehicle Type</a>
-                            </li>
+                            
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Procedures" asp-action="Index">Procedimientos</a>
                             </li>
@@ -84,9 +76,9 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
+        @*<div class="container">
             &copy; Copyright 2021 - goFpg is a Trademark of Florida Prime Glass LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        </div>*@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
