@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoFpg.API.Controllers
@@ -26,7 +24,7 @@ namespace GoFpg.API.Controllers
             return View(await _context.Procedures.ToListAsync());
         }
 
-       
+
         // GET: VehicleTypes/Create
         public IActionResult Create()
         {

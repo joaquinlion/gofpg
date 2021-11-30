@@ -6,7 +6,6 @@ using GoFpg.API.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -211,7 +210,7 @@ namespace GoFpg.API.Controllers
 
         public async Task<IActionResult> ConfirmEmail(int userId, string token)
         {
-            if ((userId) <1 || string.IsNullOrEmpty(token))
+            if ((userId) < 1 || string.IsNullOrEmpty(token))
             {
                 return NotFound();
             }

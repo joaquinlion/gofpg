@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace gofpg.Common.Models
+﻿namespace gofpg.Common.Models
 {
     public class Response
     {

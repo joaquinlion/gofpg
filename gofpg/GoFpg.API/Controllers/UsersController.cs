@@ -412,7 +412,7 @@ namespace GoFpg.API.Controllers
                 .ThenInclude(x => x.Details)
                 .ThenInclude(x => x.Procedure)
                 .Include(x => x.Histories)
-                
+
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (vehicle == null)
             {
@@ -438,8 +438,8 @@ namespace GoFpg.API.Controllers
             HistoryViewModel model = new HistoryViewModel
             {
                 VehicleId = vehicle.Id
+                
             };
-
             return View(model);
         }
 
@@ -460,10 +460,26 @@ namespace GoFpg.API.Controllers
                 User user = await _userHelper.GetUserAsync(User.Identity.Name);
                 History history = new History
                 {
-                    Date = DateTime.UtcNow,
+                    RODate = model.RODate,
+                    Damage = model.Damage,
+                    DateOfLoss = model.DateOfLoss,
+                    Repair = model.Repair,
+                    InsuranceCo = model.InsuranceCo,
+                    PolicyNumber = model.PolicyNumber,
+                    ScheduleDate = model.ScheduleDate,
+                    ScheduleTime = model.ScheduleTime,
                     Mileage = model.Mileage,
+                    ReferralNumber = model.ReferralNumber,
+                    AltContactName = model.AltContactName,
+                    AltPhoneNumber = model.AltPhoneNumber,
+                    AltAddress = model.AltAddress,
+                    AltAddress2 = model.AltAddress2,
+                    AltCity = model.AltCity,
+                    AltState = model.AltState,
+                    AltZip = model.AltZip,
                     Remarks = model.Remarks,
-                    
+                    Date = DateTime.UtcNow,
+                    //RONumber = model.i,
                 };
 
                 if (vehicle.Histories == null)
@@ -480,7 +496,7 @@ namespace GoFpg.API.Controllers
             return View(model);
         }
 
-        
+        [HttpGet]
         public async void vinDecode(VehicleViewModel vehicleViewModel)
         {
 

@@ -1,12 +1,6 @@
 ﻿using GoFpg.API.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using GoFpg.API.Models;
-using Microsoft.AspNetCore.Identity;
 
 namespace GoFpg.API.Data
 {
@@ -16,22 +10,22 @@ namespace GoFpg.API.Data
         {
 
         }
-        
+
         public DbSet<Detail> Details { get; set; }
         public DbSet<History> Histories { get; set; }
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehiclePhoto> VehiclePhotos { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
-        
+
         public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
-        
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Vehicle>().HasIndex(x => x.Tag).IsUnique();
-            
+
             modelBuilder.Entity<Procedure>().HasIndex(x => x.Description).IsUnique();
             modelBuilder.Entity<InsuranceCompany>().HasIndex(x => x.InsCompany).IsUnique();
             modelBuilder.Entity<InsuranceClaim>().HasIndex(x => x.Id).IsUnique();
@@ -49,7 +43,7 @@ namespace GoFpg.API.Data
             //        .HasForeignKey(guest => guest.Id)
             //        .IsRequired();
             //});
-            
+
             modelBuilder.Entity<Detail>().Property(p => p.LaborPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Detail>().Property(p => p.SparePartsPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Procedure>().Property(p => p.Price).HasColumnType("decimal(18,4)");

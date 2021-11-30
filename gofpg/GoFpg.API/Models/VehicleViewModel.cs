@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoFpg.API.Models
 {
@@ -15,14 +13,14 @@ namespace GoFpg.API.Models
 
         [Display(Name = "Tipo de vehículo")]
         [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de verhículo.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int VehicleTypeId { get; set; }
 
         public IEnumerable<SelectListItem> VehicleTypes { get; set; }
 
         [Display(Name = "Marca")]
         [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar una marca.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int BrandId { get; set; }
 
         public IEnumerable<SelectListItem> Brands { get; set; }

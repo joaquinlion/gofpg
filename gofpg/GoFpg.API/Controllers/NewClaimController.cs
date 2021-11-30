@@ -51,7 +51,7 @@ namespace GoFpg.API.Controllers
             return View(insuranceClaim);
         }
 
-        
+
         // GET: InsuranceClaims/Create
         public IActionResult Create()
         {

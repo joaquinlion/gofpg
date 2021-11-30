@@ -1,7 +1,5 @@
 ﻿using GoFpg.API.Data.Entities;
 using GoFpg.API.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,10 +20,10 @@ namespace GoFpg.API.Data
         public async Task SeedAsync()
         {
             await _context.Database.EnsureCreatedAsync();
-            
+
             await CheckProceduresAsync();
             await CheckRolesAsync();
-            await CheckUsersAsync ("Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Admin);
+            await CheckUsersAsync("Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Admin);
             await CheckUsersAsync("Juan", "Zuluaga", "zulu@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.User);
             await CheckUsersAsync("Joaquin", "Leon", "joaquin@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Sales);
 
@@ -43,13 +41,13 @@ namespace GoFpg.API.Data
                     Zip = zip,
                     State = state,
                     //Document = document,
-                    
+
                     Email = email,
                     FirstName = firstName,
                     LastName = lastName,
                     PhoneNumber = phoneNumber,
                     UserName = email,
-                    UserType = userType   
+                    UserType = userType
                 };
                 await _userHelper.AddUserAsync(user, "123456");
 
@@ -58,7 +56,7 @@ namespace GoFpg.API.Data
                 string token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
                 await _userHelper.ConfirmEmailAsync(user, token);
 
-                
+
             }
         }
 
@@ -79,11 +77,11 @@ namespace GoFpg.API.Data
             }
         }
 
-        
 
-        
+
+
     }
 }
 
-    
+
 

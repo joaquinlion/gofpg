@@ -1,5 +1,3 @@
-using System;
-
 namespace GoFpg.API.Models
 {
     public class ErrorViewModel

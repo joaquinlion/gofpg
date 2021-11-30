@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GoFpg.API.Data;
+using GoFpg.API.Data.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using GoFpg.API.Data;
-using GoFpg.API.Data.Entities;
 
 namespace GoFpg.API.Controllers
 {

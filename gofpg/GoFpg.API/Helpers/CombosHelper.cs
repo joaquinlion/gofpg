@@ -1,9 +1,7 @@
 ﻿using GoFpg.API.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace GoFpg.API.Helpers
 {
@@ -73,7 +71,7 @@ namespace GoFpg.API.Helpers
         //    return list;
         //}
 
-        
+
 
         //public IEnumerable<SelectListItem> GetComboVehicleTypes()
         //{

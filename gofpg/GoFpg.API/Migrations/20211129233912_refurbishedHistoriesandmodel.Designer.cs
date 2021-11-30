@@ -4,14 +4,16 @@ using GoFpg.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211129233912_refurbishedHistoriesandmodel")]
+    partial class refurbishedHistoriesandmodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,6 +102,7 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Mileage")
+                        .IsRequired()
                         .HasMaxLength(7)
                         .HasColumnType("nvarchar(7)");
 
@@ -125,6 +128,10 @@ namespace GoFpg.API.Migrations
 
                     b.Property<DateTime>("ScheduleTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Tag")
+                        .HasMaxLength(13)
+                        .HasColumnType("nvarchar(13)");
 
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");

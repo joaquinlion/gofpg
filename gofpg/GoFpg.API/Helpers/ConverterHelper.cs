@@ -3,7 +3,6 @@ using GoFpg.API.Data.Entities;
 using GoFpg.API.Models;
 using System;
 using System.Threading.Tasks;
-using System.Globalization;
 
 namespace GoFpg.API.Helpers
 {
@@ -156,8 +155,14 @@ namespace GoFpg.API.Helpers
                 Id = isNew ? 0 : model.Id,
                 VinNumber = model.VinNumber.ToUpper(),
                 Year = model.Year,
+                Make = model.Make,
                 Model = model.Model,
                 Tag = model.Tag.ToUpper(),
+                BodyClass = model.BodyClass,
+                Doors = model.Doors,
+                VehicleType = model.VehicleType,
+                LaneKeep = model.LaneKeep,
+                LaneDeparture = model.LaneDeparture,
                 Remarks = model.Remarks,
             };
         }
