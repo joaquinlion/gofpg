@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace GoFpg.API.Data.Entities
 {
@@ -104,9 +105,9 @@ namespace GoFpg.API.Data.Entities
         public string Remarks { get; set; }
 
         //[JsonIgnore]
-        //[Display(Name = "Mecánico")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        //public User User { get; set; }
+        [Display(Name = "Mecánico")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public User User { get; set; }
 
         public ICollection<Detail> Details { get; set; }
 

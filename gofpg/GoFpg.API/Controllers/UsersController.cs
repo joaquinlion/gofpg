@@ -536,9 +536,27 @@ namespace GoFpg.API.Controllers
 
             HistoryViewModel model = new HistoryViewModel
             {
+                VehicleId = history.Vehicle.Id,
+                RODate = history.RODate,
+                Damage = history.Damage,
+                DateOfLoss = history.DateOfLoss,
+                Repair = history.Repair,
+                InsuranceCo = history.InsuranceCo,
+                PolicyNumber = history.PolicyNumber,
+                ScheduleDate = history.ScheduleDate,
+                ScheduleTime = history.ScheduleTime,
                 Mileage = history.Mileage,
+                ReferralNumber = history.ReferralNumber,
+                AltContactName = history.AltContactName,
+                AltPhoneNumber = history.AltPhoneNumber,
+                AltAddress = history.AltAddress,
+                AltAddress2 = history.AltAddress2,
+                AltCity = history.AltCity,
+                AltState = history.AltState,
+                AltZip = history.AltZip,
                 Remarks = history.Remarks,
-                VehicleId = history.Vehicle.Id
+                //Date = DateTime.UtcNow,
+                //RONumber = model.i,
             };
 
             return View(model);
@@ -551,7 +569,24 @@ namespace GoFpg.API.Controllers
             if (ModelState.IsValid)
             {
                 History history = await _context.Histories.FindAsync(id);
+                history.RODate = historyViewModel.RODate;
+                history.Damage = historyViewModel.Damage;
                 history.Mileage = historyViewModel.Mileage;
+                history.DateOfLoss = historyViewModel.DateOfLoss;
+                history.Repair = historyViewModel.Repair;
+                history.InsuranceCo = historyViewModel.InsuranceCo;
+                history.PolicyNumber = historyViewModel.PolicyNumber;
+                history.ScheduleDate = historyViewModel.ScheduleDate;
+                history.ScheduleTime = historyViewModel.ScheduleTime;
+                history.Mileage = historyViewModel.Mileage;
+                history.ReferralNumber = historyViewModel.ReferralNumber;
+                history.AltContactName = historyViewModel.AltContactName;
+                history.AltPhoneNumber = historyViewModel.AltPhoneNumber;
+                history.AltAddress = historyViewModel.AltAddress;
+                history.AltAddress2 = historyViewModel.AltAddress2;
+                history.AltState = historyViewModel.AltState;
+                history.AltCity = historyViewModel.AltCity;
+                history.AltZip = historyViewModel.AltZip;
                 history.Remarks = historyViewModel.Remarks;
                 _context.Histories.Update(history);
                 await _context.SaveChangesAsync();
@@ -594,6 +629,7 @@ namespace GoFpg.API.Controllers
                 .ThenInclude(x => x.Procedure)
                 .Include(x => x.Vehicle)
                 .ThenInclude(x => x.VehiclePhotos)
+                .Include(x => x.User)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (history == null)
             {
