@@ -29,4 +29,60 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}}
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@*<script src="/js/vinDecode.js"></script>*@
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Vinnum").keyup(function () {
+            var vinValue = $.trim($("#Vinnum").val());
+            if (vinValue.length >= 17) {
+                Rellenar();
+            }
+        });
+    });
+
+    function Rellenar() {
+        var vinValue = $.trim($("#Vinnum").val());
+        var urlRequest = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/' + vinValue + '?format=json';
+        $.ajax({
+            url: urlRequest,
+            type: "GET",
+            dataType: "json",
+            success: function (result) {
+                var resultf = result.Results[0];
+                $("#Year").val(resultf.ModelYear);
+                $("#Make").val(resultf.Make);
+                $("#Model").val(resultf.Model);
+                $("#Doors").val(resultf.Doors);
+                $("#BodyClass").val(resultf.BodyClass);
+                $("#VehicleType").val(resultf.VehicleType);
+                $("#LaneDeparture").val(resultf.LaneDepartureWarning);
+                $("#LaneKeep").val(resultf.LaneKeepSystem);
+                $("#ErrorCode").val(resultf.ErrorCode);
+                //var objJson = result,
+                //FillFields(objJson)
+
+            },
+            error: function (xhr, ajaxOption, thrownError) {
+                console.log(xhr)
+            }
+        });
+    }
+    //function FillFields(objJson) {
+    //    if (!!objJson && !!objJson.Results && !!objJson.Results.length > 0) {
+    //        var result = objJson.Results[0];
+    //        $("#Year").val(result.ModelYear);
+    //        $("#Make").val(result.Make);
+    //        $("#Model").val(result.Model);
+    //        $("#Doors").val(result.Doors);
+    //        $("#BodyClass").val(result.BodyClass);
+    //        $("#VehicleType").val(result.VehicleType);
+    //        $("#LaneDeparture").val(result.LaneDepartureWarning);
+    //        $("#LaneKeep").val(result.LaneKeepSystem);
+    //        $("#ErrorCode").val(result.ErrorCode);
+    //    }
+    //}
+</script>
+}

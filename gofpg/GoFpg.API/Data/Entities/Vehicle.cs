@@ -75,6 +75,12 @@ namespace GoFpg.API.Data.Entities
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
+        [Display(Name = "Year/Make/Model/Color")]
+        public string VehicleDescription => $"{Year} {Make} {Model} {Color}";
+
+        [Display(Name = "Vehicle Type")]
+        public string DoorsNBody => $"{Doors} {"Doors"} {BodyClass}";
+
 
 
 

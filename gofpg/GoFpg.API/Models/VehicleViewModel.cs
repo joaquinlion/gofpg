@@ -32,7 +32,7 @@ namespace GoFpg.API.Models
 
         [Display(Name = "VIN Number")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
+        [StringLength(17, MinimumLength = 17, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string VinNumber { get; set; }
 
         [Display(Name = "Tag")]
@@ -80,7 +80,7 @@ namespace GoFpg.API.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneKeep { get; set; }
 
-        [Display(Name = "Body Class")]
+        [Display(Name = "ErrorCode")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string ErrorCode { get; set; }

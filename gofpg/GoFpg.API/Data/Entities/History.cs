@@ -109,6 +109,9 @@ namespace GoFpg.API.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public User User { get; set; }
 
+        [Display(Name = "Repairs Address")]
+        public string CustoAltAddress => $"{AltAddress} {AltAddress2} {AltCity} {AltState} {AltZip}";
+
         public ICollection<Detail> Details { get; set; }
 
         [Display(Name = "# Detalles")]

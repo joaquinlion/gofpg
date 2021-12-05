@@ -8,213 +8,13 @@
 <div>
     <h4>Historia</h4>
     <hr />
-        <div class="row">
-        <div class="col-md-8">
-            <dl class="row">
-                <dl class="col-sm-5">
-                    <dl class="row">
-                    <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.User.CustomerName)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.User.CustomerName)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.User.Email)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.User.Email)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.User.PhoneNumber)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.User.PhoneNumber)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.User.CustoAddress)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.User.CustoAddress)
-                </dd>
-                </dl>
-                </dl>
-                <dl class="col-sm-5">
-                    <dl class="row">
-                    <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.VinNumber)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.VinNumber)
-                </dd>
-                    <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Doors)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Doors)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.BodyClass)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.BodyClass)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Color)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Color)
-                </dd>
-                </dl>
-                </dl>
-                </dl>
-                </div>
-                </div>
-                <hr />
+
+    <partial name="_DetailsHistory" />
+    
+    <hr />
     <div class="row">
         <div class="col-md-8">
             <dl class="row">
-                <dl class="col-sm-5">
-                    <dl class="row">
-                    <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Year)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Year)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Make)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Make)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Model)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Model)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Tag)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Tag)
-                </dd>
-                </dl>
-                </dl>
-                <dl class="col-sm-5">
-                    <dl class="row">
-                    <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.VinNumber)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.VinNumber)
-                </dd>
-                    <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Doors)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Doors)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.BodyClass)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.BodyClass)
-                </dd>
-                <dt class="col-sm-5">
-                    @Html.DisplayNameFor(model => model.Vehicle.Color)
-                </dt>
-                <dd class="col-sm-7">
-                    @Html.DisplayFor(model => model.Vehicle.Color)
-                </dd>
-                </dl>
-                </dl>
-                </dl>
-                </div>
-                </div>
-                <hr />
-    <div class="row">
-        <div class="col-md-8">
-            <dl class="row">
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Date)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Date)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.RODate)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.RODate)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Damage)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Damage)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.DateOfLoss)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.DateOfLoss)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Repair)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Repair)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.InsuranceCo)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.InsuranceCo)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.PolicyNumber)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.PolicyNumber)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.ScheduleDate)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.ScheduleDate)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.ScheduleTime)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.ScheduleTime)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.Mileage)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.Mileage)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.ReferralNumber)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.ReferralNumber)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.AltContactName)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.AltContactName)
-                </dd>
-                <dt class="col-sm-3">
-                    @Html.DisplayNameFor(model => model.AltPhoneNumber)
-                </dt>
-                <dd class="col-sm-9">
-                    @Html.DisplayFor(model => model.AltPhoneNumber)
-                </dd>
                 <dt class="col-sm-3">
                     @Html.DisplayNameFor(model => model.Remarks)
                 </dt>
@@ -250,7 +50,7 @@
 <div>
     <a asp-action="AddDetail" asp-route-id="@Model.Id" class="btn btn-primary">Adicionar Procedimiento</a>
     <a asp-action="EditHistory" asp-route-id="@Model.Id" class="btn btn-warning">Editar Historia</a>
-    <a asp-action="DetailsHistory" asp-route-id="@Model.Id" class="btn btn-info">Print Invoice</a>
+    <a target="_blank" href="#" onclick="ExportToPdf(); return false;" class="btn btn-info">Print Invoice</a>
     <a asp-action="DetailsVehicle" asp-route-id="@Model.Vehicle.Id" class="btn btn-success">Regresar</a>
 </div>
 <br />
@@ -286,27 +86,28 @@
                     <tbody>
                         @foreach (var item in Model.Details)
                         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Procedure.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Remarks)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LaborPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SparePartsPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TotalPrice)
-                </td>
-                <td>
-                    <a asp-action="EditDetail" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
-                </td>
-            </tr>}
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Procedure.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Remarks)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LaborPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SparePartsPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+                            <td>
+                                <a asp-action="EditDetail" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                            </td>
+                        </tr>
+}
                     </tbody>
                 </table>
             </div>
@@ -320,8 +121,19 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="/js/deleteDialog.js"></script>
-
-    <script type="text/javascript">$(document).ready(function () {
+    <script type="text/javascript">
+        function ExportToPdf() {
+            var x = "To export this page in PDF format please use browser's 'Print to PDF' or 'Save as PDF' feature!"
+                + "\n\nWhen 'Print' dialog opens please change your default printer and select 'Print to PDF' or 'Save as PDF' "
+                + "\n(Note: Different browsers may have different name for this feature.)"
+                + "\n\n    OK - to continue with Export to PDF"
+                + "\n    Cancel - to cancel";
+            if (confirm(x))
+                window.print();
+        }
+    </script>
+    <script type="text/javascript">
+    $(document).ready(function () {
             $('#MyTable').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"

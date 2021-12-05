@@ -625,12 +625,15 @@ namespace GoFpg.API.Controllers
             }
 
             History history = await _context.Histories
+                .Include(x => x.User)
                 .Include(x => x.Details)
                 .ThenInclude(x => x.Procedure)
                 .Include(x => x.Vehicle)
                 .ThenInclude(x => x.VehiclePhotos)
-                .Include(x => x.User)
+                .ThenInclude(x => x.Vehicle.User)
                 .FirstOrDefaultAsync(x => x.Id == id);
+            //User user = await _context.Users
+
             if (history == null)
             {
                 return NotFound();
