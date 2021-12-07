@@ -16,24 +16,40 @@ namespace GoFpg.API.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Email { get; set; }
 
-        [Display(Name = "Nombres")]
+        [Display(Name = "First Name")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Apellidos")]
+        [Display(Name = "Last Name")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LastName { get; set; }
 
-        [Display(Name = "Documento")]
-        [MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        //[Display(Name = "Documento")]
+        //[MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string Document { get; set; }
+        //public string Document { get; set; }
 
-        [Display(Name = "Dirección")]
+        [Display(Name = "Street Adress")]
         [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string Address { get; set; }
+
+        [Display(Name = "Apartment, Unit or Suite #")]
+        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string Address2 { get; set; }
+
+        [Display(Name = "City")]
+        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string City { get; set; }
+
+        [Display(Name = "Zip Code")]
+        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string Zip { get; set; }
+
+        [Display(Name = "State")]
+        [MaxLength(16, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        public string State { get; set; }
 
         [Display(Name = "Phone Number")]
         [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
@@ -48,12 +64,12 @@ namespace GoFpg.API.Models
         [Display(Name = "Foto")]
         public IFormFile ImageFile { get; set; }
 
-        [Display(Name = "Tipo de documento")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
+        //[Display(Name = "Tipo de documento")]
+        //[Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public int DocumentTypeId { get; set; }
+        //public int DocumentTypeId { get; set; }
 
-        public IEnumerable<SelectListItem> DocumentTypes { get; set; }
+        //public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty

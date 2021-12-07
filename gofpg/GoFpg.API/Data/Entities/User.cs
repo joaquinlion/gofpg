@@ -18,7 +18,7 @@ namespace GoFpg.API.Data.Entities
         public string LastName { get; set; }
 
         [Display(Name = "Street Adress")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string Address { get; set; }
 
         [Display(Name = "Apt, Ste, #")]

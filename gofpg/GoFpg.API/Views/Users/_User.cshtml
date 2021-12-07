@@ -4,17 +4,23 @@
     <div class="col-md-6">
         <div class="form-group">
             <label asp-for="FirstName" class="control-label"></label>
-            <input asp-for="FirstName" class="form-control" style="text-transform:capitalize"/>
+            <input asp-for="FirstName" class="form-control" style="text-transform:capitalize" />
             <span asp-validation-for="FirstName" class="text-danger"></span>
         </div>
 
         <div class="form-group">
             <label asp-for="LastName" class="control-label"></label>
-            <input asp-for="LastName" class="form-control" style="text-transform:capitalize"/>
+            <input asp-for="LastName" class="form-control" style="text-transform:capitalize" />
             <span asp-validation-for="LastName" class="text-danger"></span>
         </div>
 
         <div class="form-group">
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+
+        @*<div class="form-group">
             <label asp-for="DocumentTypeId" class="control-label"></label>
             <input asp-for="DocumentTypeId" asp-items="Model.DocumentTypes" class="form-control"></input>
             <span asp-validation-for="DocumentTypeId" class="text-danger"></span>
@@ -24,21 +30,36 @@
             <label asp-for="Document" class="control-label"></label>
             <input asp-for="Document" class="form-control" />
             <span asp-validation-for="Document" class="text-danger"></span>
-        </div>
+        </div>*@
     </div>
     <div class="col-md-6">
-        <div class="form-group">
-            <label asp-for="Address" class="control-label"></label>
-            <input asp-for="Address" class="form-control" />
-            <span asp-validation-for="Address" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="PhoneNumber" class="control-label"></label>
-            <input asp-for="PhoneNumber" class="form-control" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-        </div>
-
+        
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" id="ship-address" required autocomplete="off" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address2" class="control-label"></label>
+                <input asp-for="Address2" id="address2" class="form-control" />
+                <span asp-validation-for="Address2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" id="locality" class="form-control" style="text-transform:capitalize" required />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" id="state" class="form-control" style="text-transform:capitalize" required />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zip" class="control-label"></label>
+                <input asp-for="Zip" id="postcode" class="form-control" required />
+                <span asp-validation-for="Zip" class="text-danger"></span>
+            </div>
+        
         <div class="form-group">
             <label asp-for="ImageFile" class="control-label"></label>
             <input asp-for="ImageFile" type="file" class="form-control" />

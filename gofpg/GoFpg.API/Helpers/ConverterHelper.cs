@@ -116,6 +116,10 @@ namespace GoFpg.API.Helpers
             return new User
             {
                 Address = model.Address,
+                Address2 = model.Address2,
+                City = model.City,
+                State = model.State,
+                Zip = model.Zip,
                 //Document = model.Document,
                 //DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId),
                 Email = model.Email,
@@ -134,6 +138,10 @@ namespace GoFpg.API.Helpers
             return new UserViewModel
             {
                 Address = user.Address,
+                Address2 = user.Address2,
+                City = user.City,
+                State = user.State,
+                Zip = user.Zip,
                 //Document = user.Document,
                 //DocumentTypeId = user.DocumentType.Id,
                 //DocumentTypes = _combosHelper.GetComboDocumentTypes(),
