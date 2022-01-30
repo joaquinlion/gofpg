@@ -91,6 +91,9 @@ namespace GoFpg.API.Models
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
+        [Display(Name = "VIN Picture")]
+        public IFormFile VinImageFile { get; set; }
+
         [Display(Name = "Foto")]
         public IFormFile ImageFile { get; set; }
 

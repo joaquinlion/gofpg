@@ -3,16 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - GoFpg.API</title>
+    <meta name="description" content="Offering Mobile Auto Glass Repairs & Replacements, With Easy Scheduling. Call Us Now!" />
+    <title>@ViewData["Title"] | Florida Prime Glass®</title>
+    <link rel="icon" type="image/x-icon" href="~/Images/Favicon/FPG.ico"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/scanstyle.css" rel="stylesheet" />
 </head>
-<body style="background-color: #575757;">
-    <header style="background-color: #575757;">
+<body>
+    <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light @*bg-white*@ border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" font="FiraSans-UltraItalic.ttf">
-                    <img src="~/Images/logofpg1.png" width="160" height="66" />
+                    <img src="~/Images/logofpg.png" width="160" height="66" />
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -20,12 +23,21 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
+
                         @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                         {
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Procedures" asp-action="Index">Procedimientos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Glasstypes" asp-action="Index">Glass Types</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Parts" asp-action="Index">Parts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Quotes" asp-action="Index">Quotes</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
@@ -55,15 +67,17 @@
                     <ul class="nav navbar-nav navbar-right">
                         @if (User.Identity.IsAuthenticated)
                         {
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a>
-                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>
-                                </li> }
-                                            else
-                                            {
-                                <li><a asp-area="" asp-controller="Account" asp-action="Login">Log In</a></li>}
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="ChangeUser">@User.Identity.Name</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Cerrar Sesión</a>
+                            </li>
+ }
+                        else
+                        {
+                            <li><a asp-area="" asp-controller="Account" asp-action="Login">Log In</a></li>
+}
                     </ul>
                 </div>
             </div>
@@ -74,11 +88,11 @@
             @RenderBody()
         </main>
     </div>
-
+    
     <footer class="border-top footer text-muted">
         @*<div class="container">
-            &copy; Copyright 2021 - goFpg is a Trademark of Florida Prime Glass LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>*@
+                &copy; Copyright 2021 - goFpg is a Trademark of Florida Prime Glass LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>*@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

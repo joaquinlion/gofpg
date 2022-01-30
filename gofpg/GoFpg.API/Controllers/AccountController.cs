@@ -108,7 +108,7 @@ namespace GoFpg.API.Controllers
                     token = myToken
                 }, protocol: HttpContext.Request.Scheme);
 
-                Response response = _mailHelper.SendMail(model.Username, "Vehicles - Confirmación de cuenta", $"<h1>Vehicles - Confirmación de cuenta</h1>" +
+                Response response = _mailHelper.SendMail(model.Username, "Vehicles - Confirmación de cuenta", null,$"<h1>Vehicles - Confirmación de cuenta</h1>" +
                     $"Para habilitar el usuario, " +
                     $"por favor hacer clic en el siguiente enlace: </br></br><a href = \"{tokenLink}\">Confirmar Email</a>");
                 if (response.IsSuccess)
@@ -252,7 +252,7 @@ namespace GoFpg.API.Controllers
                     "ResetPassword",
                     "Account",
                     new { token = myToken }, protocol: HttpContext.Request.Scheme);
-                _mailHelper.SendMail(model.Email, "Vehicles - Reseteo de contraseña", $"<h1>Vehicles - Reseteo de contraseña</h1>" +
+                _mailHelper.SendMail(model.Email, "Vehicles - Reseteo de contraseña", null, $"<h1>Vehicles - Reseteo de contraseña</h1>" +
                     $"Para establecer una nueva contraseña haga clic en el siguiente enlace:</br></br>" +
                     $"<a href = \"{link}\">Cambio de Contraseña</a>");
                 ViewBag.Message = "Las instrucciones para el cambio de contraseña han sido enviadas a su email.";

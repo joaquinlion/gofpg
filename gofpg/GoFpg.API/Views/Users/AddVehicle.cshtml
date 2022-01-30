@@ -8,9 +8,11 @@
 <hr />
 <div class="row">
     <div class="col-md-12">
+        <partial name="_vinScan" />
         <form asp-action="AddVehicle" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UserId" />
+
 
             <partial name="_Vehicle" />
 
@@ -23,7 +25,9 @@
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
                 <a asp-action="Details" asp-route-id="@Model.UserId" class="btn btn-success">Regresar</a>
+                <a target="_blank" href="#" onclick="ExportToPdf(); return false;" class="btn btn-info">Print Invoice</a>
             </div>
+
         </form>
     </div>
 </div>
@@ -31,58 +35,53 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-@*<script src="/js/vinDecode.js"></script>*@
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#Vinnum").keyup(function () {
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="vendor/jquery-1.9.0.min.js" type="text/javascript"></script>
+    <script src="../dist/quagga.js" type="text/javascript"></script>
+    <script src="~/js/vinScanner.js" type="text/javascript"></script>*@
+    @*<script src="/js/vinDecode.js"></script>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Vinnum").keyup(function () {
+                var vinValue = $.trim($("#Vinnum").val());
+                if (vinValue.length >= 17) {
+                    Rellenar();
+                }
+            });
+        });
+
+        function Rellenar() {
             var vinValue = $.trim($("#Vinnum").val());
-            if (vinValue.length >= 17) {
-                Rellenar();
-            }
-        });
-    });
+            var urlRequest = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/' + vinValue + '?format=json';
+            $.ajax({
+                url: urlRequest,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var resultf = result.Results[0];
+                    $("#Year").val(resultf.ModelYear);
+                    $("#Make").val(resultf.Make);
+                    $("#Model").val(resultf.Model);
+                    $("#Doors").val(resultf.Doors);
+                    $("#BodyClass").val(resultf.BodyClass);
+                    $("#VehicleType").val(resultf.VehicleType);
+                    $("#LaneDeparture").val(resultf.LaneDepartureWarning);
+                    $("#LaneKeep").val(resultf.LaneKeepSystem);
+                    $("#ErrorCode").val(resultf.ErrorCode);
+                    //var objJson = result,
+                    //FillFields(objJson)
 
-    function Rellenar() {
-        var vinValue = $.trim($("#Vinnum").val());
-        var urlRequest = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/' + vinValue + '?format=json';
-        $.ajax({
-            url: urlRequest,
-            type: "GET",
-            dataType: "json",
-            success: function (result) {
-                var resultf = result.Results[0];
-                $("#Year").val(resultf.ModelYear);
-                $("#Make").val(resultf.Make);
-                $("#Model").val(resultf.Model);
-                $("#Doors").val(resultf.Doors);
-                $("#BodyClass").val(resultf.BodyClass);
-                $("#VehicleType").val(resultf.VehicleType);
-                $("#LaneDeparture").val(resultf.LaneDepartureWarning);
-                $("#LaneKeep").val(resultf.LaneKeepSystem);
-                $("#ErrorCode").val(resultf.ErrorCode);
-                //var objJson = result,
-                //FillFields(objJson)
-
-            },
-            error: function (xhr, ajaxOption, thrownError) {
-                console.log(xhr)
-            }
-        });
-    }
-    //function FillFields(objJson) {
-    //    if (!!objJson && !!objJson.Results && !!objJson.Results.length > 0) {
-    //        var result = objJson.Results[0];
-    //        $("#Year").val(result.ModelYear);
-    //        $("#Make").val(result.Make);
-    //        $("#Model").val(result.Model);
-    //        $("#Doors").val(result.Doors);
-    //        $("#BodyClass").val(result.BodyClass);
-    //        $("#VehicleType").val(result.VehicleType);
-    //        $("#LaneDeparture").val(result.LaneDepartureWarning);
-    //        $("#LaneKeep").val(result.LaneKeepSystem);
-    //        $("#ErrorCode").val(result.ErrorCode);
-    //    }
-    //}
-</script>
+                },
+                error: function (xhr, ajaxOption, thrownError) {
+                    console.log(xhr)
+                }
+            });
+        }
+            //function FillFields(objJson) {
+            //    if (!!objJson && !!objJson.Results && !!objJson.Results.length > 0) {
+            //        var result = objJson.Results[0];
+            //        $("#Year").val(result.ModelYear);
+            //    }
+            //}
+    </script>
 }

@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Florida Auto Glass Specialists";
 }
 
 <div class="text-center">
@@ -12,10 +12,56 @@
         }
     </style>
 
-    <h1 style="font-family:Helvetica" class="display-4">FPG</h1>
+    @*<h1 style="font-family:Helvetica" class="display-4">Florida Prime Glass - Auto Glass Services</h1>
 
-    <img src="~/Images/glass logo1.png" />
+    <img src="~/Images/glass logo.png" />
 
-    <p>This Website is under Construction....</p>
+    <p>This Website is under Construction....</p>*@
+    <partial name="_Presentation" />
+    <partial name="_Brands" />
     
+
 </div>
+
+<script type="text/javascript">$(document).ready(function () {
+            $("#Vinnum").keyup(function () {
+                var vinValue = $.trim($("#Vinnum").val());
+                if (vinValue.length >= 17) {
+                    Rellenar();
+                }
+            });
+        });
+
+        function Rellenar() {
+            var vinValue = $.trim($("#Vinnum").val());
+            var urlRequest = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/' + vinValue + '?format=json';
+            $.ajax({
+                url: urlRequest,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var resultf = result.Results[0];
+                    $("#Year").val(resultf.ModelYear);
+                    $("#Make").val(resultf.Make);
+                    $("#Model").val(resultf.Model);
+                    $("#Doors").val(resultf.Doors);
+                    $("#BodyClass").val(resultf.BodyClass);
+                    $("#VehicleType").val(resultf.VehicleType);
+                    $("#LaneDeparture").val(resultf.LaneDepartureWarning);
+                    $("#LaneKeep").val(resultf.LaneKeepSystem);
+                    $("#ErrorCode").val(resultf.ErrorCode);
+                    //var objJson = result,
+                    //FillFields(objJson)
+
+                },
+                error: function (xhr, ajaxOption, thrownError) {
+                    console.log(xhr)
+                }
+            });
+        }
+            //function FillFields(objJson) {
+            //    if (!!objJson && !!objJson.Results && !!objJson.Results.length > 0) {
+            //        var result = objJson.Results[0];
+            //        $("#Year").val(result.ModelYear);
+            //    }
+            //}</script>

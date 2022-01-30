@@ -81,10 +81,6 @@ namespace GoFpg.API.Data.Entities
         [Display(Name = "Vehicle Type")]
         public string DoorsNBody => $"{Doors} {"Doors"} {BodyClass}";
 
-
-
-
-
         public ICollection<VehiclePhoto> VehiclePhotos { get; set; }
 
         [Display(Name = "# Fotos")]

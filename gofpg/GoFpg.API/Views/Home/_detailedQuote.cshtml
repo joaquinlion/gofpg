@@ -1,0 +1,123 @@
+﻿
+
+<input type="text" style="text-transform:capitalize" placeholder="Enter Last Name">
+<div class="row">
+    <div class="form-group">
+        <label class="control-label">Address</label>
+        <input class="form-control" id="ship-address" required autocomplete="off" />
+    </div>
+    <div class="form-group">
+        <label class="control-label">Apt</label>
+        <input id="address2" class="form-control" />
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <input id="locality" class="form-control" style="text-transform:capitalize" required disabled />
+    </div>
+    <div class="form-group">
+        <input id="state" class="form-control" style="text-transform:capitalize" required disabled />
+    </div>
+    <div class="form-group">
+        <input id="postcode" class="form-control" required disabled />
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group">
+        <label class="control-label">Vin</label>
+        <input id="Vinnum" style="text-transform:uppercase" />
+        @*<span id="ErrorCode" class="text-success"></span>*@
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <input id="Year" class="form-control" required disabled />
+    </div>
+    <div class="form-group">
+        <input id="Make" class="form-control" required disabled />
+    </div>
+    <div class="form-group">
+        <input id="Model" class="form-control" required disabled />
+    </div>
+</div>
+<div class="form-group">
+    <input type="hidden" id="Doors" class="form-control" required disabled />
+</div>
+<div class="form-group">
+    <input type="hidden" id="BodyClass" class="form-control" required disabled />
+</div>
+<div class="form-group">
+    <input type="hidden" id="VehicleType" class="form-control" required disabled />
+</div>
+<div class="form-group">
+    <input type="hidden" id="LaneDeparture" class="form-control" disabled />
+</div>
+<div class="form-group">
+    <input type="hidden" id="LaneKeep" class="form-control" disabled />
+</div>
+
+<input type="text" name="city" list="cityname">
+<datalist id="cityname">
+    <option value="Windshield" />
+    <option value="BackGlass" />
+    <option value="Front Right Door" />
+    <option value="Front Left Door" />
+    <option value="Front Right QuarterWindow" />
+    <option value="Front Left QuarterWindow" />
+    <option value="Rear Right Door" />
+    <option value="Rear Left Door" />
+    <option value="Rear Right QuarterWindow" />
+    <option value="Rear Left QuarterWindow" />
+</datalist>
+<input id="myInput" type="text" name="myCountry" placeholder="Insurance Company Name">
+<input type="date" placeholder="Date of Loss">
+
+
+
+
+@*<script src="~/js/vinDeco.js"></script>*@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDp1BTngqrEPwaLmtUtqW5EWqpuOEdS2os&amp;callback=initAutocomplete&amp;libraries=places&amp;v=weekly" async=""></script>
+<script src="~/js/AddressFormAutocomplete.js"></script>
+<script src="~/js/InsuranceAutocomplete.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+
+        $("#Vinnum").keyup(function () {
+            var vinValue = $.trim($("#Vinnum").val());
+            if (vinValue.length >= 17) {
+                Rellenar();
+            }
+        });
+
+        function Rellenar() {
+            var vinValue = $.trim($("#Vinnum").val());
+            var urlRequest = 'https://vpic.nhtsa.dot.gov/api/vehicles/DecodeVinValues/' + vinValue + '?format=json';
+            $.ajax({
+                url: urlRequest,
+                type: "GET",
+                dataType: "json",
+                success: function (result) {
+                    var resultf = result.Results[0];
+                    $("#Year").val(resultf.ModelYear);
+                    $("#Make").val(resultf.Make);
+                    $("#Model").val(resultf.Model);
+                    $("#Doors").val(resultf.Doors);
+                    $("#BodyClass").val(resultf.BodyClass);
+                    $("#VehicleType").val(resultf.VehicleType);
+                    $("#LaneDeparture").val(resultf.LaneDepartureWarning);
+                    $("#LaneKeep").val(resultf.LaneKeepSystem);
+                    $("#ErrorCode").val(resultf.ErrorCode);
+                    //var objJson = result,
+                    //FillFields(objJson)
+                },
+                error: function (xhr, ajaxOption, thrownError) {
+                    console.log(xhr)
+                }
+            });
+        }
+                                            
+    </script>}
+

@@ -21,6 +21,10 @@ namespace GoFpg.API.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public decimal LaborPrice { get; set; }
 
+        [Display(Name = "Procedimiento")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public Part Part { get; set; }
+
         [Display(Name = "Precio Repuestos")]
         [DisplayFormat(DataFormatString = "{0:C2}")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]

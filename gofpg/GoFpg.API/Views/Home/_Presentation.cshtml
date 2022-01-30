@@ -1,0 +1,100 @@
+﻿@model GoFpg.API.Data.Entities.Quote
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div id="mga">
+    <div class="fstslider">
+        <img src="~/Images/IMG_1691.JPG" />
+        <img src="~/Images/IMG_1696.JPG" />
+        <img src="~/Images/IMG_1706.JPG" />
+    </div>
+    <form asp-action="Create" id="containe">
+        <h1>Quick Quote!!</h1>
+        <p style="font-size:60%; color:forestgreen">We typically call you in the next 5 minutes</p>
+        @*<input id="telephoneno" type="tel" inputmode="tel" maxlength="14" name="phone" onkeydown="javascript:backspacerDOWN(this,event);" onkeyup="javascript:backspacerUP(this,event);" required>*@
+        <label asp-for="PhoneNumber" style="font-weight: bold;" class="control-label"></label>
+        <input asp-for="PhoneNumber" class="form-control" maxlength="14" onkeydown="javascript:backspacerDOWN(this,event);" onkeyup="javascript:backspacerUP(this,event);" required/>
+        <label asp-for="FirstName" style="font-weight: bold;" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" style="text-transform:capitalize" required/>
+        <button type="submit" class="btn" asp-controller="Quotes" asp-action="QuickQuote">Call me Back!</button>
+        <button id="btnPost" type="submit" class="button" asp-area="" value="Send" asp-controller="Quotes" asp-action="Create"><span>Get a Detailed Quote</span></button>
+    </form>
+</div>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+<script src="~/js/telNumberFormat.js"></script>
+<link href="~/css/Presentation.css" rel="stylesheet" />
+<script>
+    var slider = tns({
+        container: '.fstslider',
+        controls: false,
+        nav: false,
+        items: 1,
+        slideBy: "page",
+        autoplay: true,
+        mouseDrag: true,
+        speed: 50,
+        loop: true,
+        rewind: false,
+        autoplayButtonOutput: false,
+        autoplayHoverPause: true,
+    });
+
+</script>
+<style>
+    body, html {
+        height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    #mga {
+        position: relative;
+    }
+    /* Add styles to the form container */
+    #containe {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 50px;
+        max-width: 300px;
+        padding: 30px;
+        background-color: white;
+        z-index: 1;
+        overflow: hidden;
+    }
+
+    /* Full-width input fields */
+    input[type=tel], input[type=text] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none;
+        background: #f1f1f1;
+    }
+
+        input[type=tel]:focus, input[type=text]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    /* Set a style for the submit button */
+    .btn {
+        background-color: #1E90FF;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+        .btn:hover {
+            opacity: 1;
+        }
+</style>

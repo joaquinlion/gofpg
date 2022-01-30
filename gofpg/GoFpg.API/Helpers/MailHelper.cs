@@ -15,7 +15,7 @@ namespace GoFpg.API.Helpers
             _configuration = configuration;
         }
 
-        public Response SendMail(string to, string subject, string body)
+        public Response SendMail(string to, string subject, string tbody, string body)
         {
             try
             {
@@ -30,6 +30,7 @@ namespace GoFpg.API.Helpers
                 message.Subject = subject;
                 BodyBuilder bodyBuilder = new BodyBuilder
                 {
+                    TextBody = tbody,
                     HtmlBody = body
                 };
                 message.Body = bodyBuilder.ToMessageBody();

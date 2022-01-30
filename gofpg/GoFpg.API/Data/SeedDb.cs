@@ -22,6 +22,7 @@ namespace GoFpg.API.Data
             await _context.Database.EnsureCreatedAsync();
 
             await CheckProceduresAsync();
+            await CheckPartsAsync();
             await CheckRolesAsync();
             await CheckUsersAsync("Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Admin);
             await CheckUsersAsync("Juan", "Zuluaga", "zulu@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.User);
@@ -71,12 +72,27 @@ namespace GoFpg.API.Data
         {
             if (!_context.Procedures.Any())
             {
-                _context.Procedures.Add(new Procedure { Price = 10000, Description = "LDWS & LKA Calibration" });
-                _context.Procedures.Add(new Procedure { Price = 10000, Description = "Windshield Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 350, ProcedureCode = "LDI", Description = "LDWS & LKA Calibration" });
+                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "WRI", Description = "Windshield Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 150, ProcedureCode = "LDC", Description = "LDWS & LKA Calibration C" });
+                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "WRC", Description = "Windshield Replacement C" });
+                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "BRC", Description = "Back Glass Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "DRC", Description = "Door Window Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "QRC", Description = "Quarter Window Replacement" });
                 await _context.SaveChangesAsync();
             }
         }
 
+        private async Task CheckPartsAsync()
+        {
+            if (!_context.Parts.Any())
+            {
+                _context.Parts.Add(new Part { Price = 15, PartNo = "WSK", PartDescription = "Windshield Urethane Adhesive" });
+                _context.Parts.Add(new Part { Price = 20, PartNo = "HMK", PartDescription = "High Modulus Urethane Adhesive" });
+                _context.Parts.Add(new Part { Price = 15, PartNo = "FCK", PartDescription = "Fast Cure Urethane Adhesive" });
+                await _context.SaveChangesAsync();
+            }
+        }
 
 
 

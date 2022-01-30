@@ -7,6 +7,11 @@ namespace GoFpg.API.Data.Entities
     {
         public int Id { get; set; }
 
+        [Display(Name = "Procedure Code")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string ProcedureCode { get; set; }
+
         [Display(Name = "Procedimiento")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]

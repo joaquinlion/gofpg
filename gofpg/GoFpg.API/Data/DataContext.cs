@@ -16,6 +16,9 @@ namespace GoFpg.API.Data
         public DbSet<Vehicle> Vehicles { get; set; }
         public DbSet<VehiclePhoto> VehiclePhotos { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
+        public DbSet<Part> Parts { get; set; }
+        public DbSet<GlassType> Glasstypes { get; set; }
+        public DbSet<Quote> Quotes { get; set; }
         public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
 
@@ -24,8 +27,10 @@ namespace GoFpg.API.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Vehicle>().HasIndex(x => x.Tag).IsUnique();
-
-            modelBuilder.Entity<Procedure>().HasIndex(x => x.Description).IsUnique();
+            modelBuilder.Entity<Procedure>().HasIndex(x => x.ProcedureCode).IsUnique();
+            modelBuilder.Entity<Part>().HasIndex(x => x.PartNo).IsUnique();
+            modelBuilder.Entity<GlassType>().HasIndex(x => x.Description).IsUnique();
+            modelBuilder.Entity<Quote>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<InsuranceCompany>().HasIndex(x => x.InsCompany).IsUnique();
             modelBuilder.Entity<InsuranceClaim>().HasIndex(x => x.Id).IsUnique();
             //modelBuilder.Entity<User>(typeBuilder =>
