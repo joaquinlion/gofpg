@@ -11,6 +11,10 @@ namespace GoFpg.API.Helpers
 
         UserViewModel ToUserViewModel(User user);
 
+        Task<Quote> ToQuoteAsync(DetailedQuoteViewModel model);
+
+        DetailedQuoteViewModel ToDetailedQuoteViewModel(Quote user);
+
         Task<Vehicle> ToVehicleAsync(VehicleViewModel model, bool isNew);
 
         VehicleViewModel ToVehicleViewModel(Vehicle vehicle);

@@ -1,4 +1,4 @@
-﻿@model GoFpg.API.Data.Entities.Quote
+﻿@model GoFpg.API.Models.DetailedQuoteViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -119,10 +119,10 @@
             @Html.DisplayFor(model => model.LaneKeep)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.GlassType)
+            @Html.DisplayNameFor(model => model.GlassTypeId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.GlassType)
+            @Html.DisplayFor(model => model.GlassTypeId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.InsuranceCompany)

@@ -18,7 +18,7 @@
         <label asp-for="FirstName" style="font-weight: bold;" class="control-label"></label>
         <input asp-for="FirstName" class="form-control" style="text-transform:capitalize" required/>
         <button type="submit" class="btn" asp-controller="Quotes" asp-action="QuickQuote">Call me Back!</button>
-        <button id="btnPost" type="submit" class="button" asp-area="" value="Send" asp-controller="Quotes" asp-action="Create"><span>Get a Detailed Quote</span></button>
+        <button class="button" asp-controller="Quotes" asp-action="Create"><span>Get a Detailed Quote</span></button>
     </form>
 </div>
 

@@ -1,0 +1,68 @@
+﻿/* (A) ACCORDION WRAPPER */
+.awrap {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* (B) HEADER TAB */
+/* (B1) TAB ITSELF */
+.ahead {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    height: 90px;
+    background: #bd1818;
+    color: #fff;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+    /* (B2) RIGHT ARROW */
+    .ahead:after {
+        position: absolute;
+        content: "\25b6";
+        background-color: transparent;
+        right: 10px;
+        transition: transform 0.2s;
+    }
+
+/* (C) CONTENT TAB */
+/* (C1) TAB ITSELF - CLOSED BY DEFAULT */
+.abody {
+    overflow: hidden;
+    transition: all 0.2s ease-out;
+    max-height: 0;
+    height: auto;
+    background: #f2f2f2;
+    color: #333;
+}
+
+/* (C2) OPEN TAB - DOWN ARROW */
+.ahead.open:after {
+    transform: rotate(90deg);
+    background-color: transparent;
+}
+
+/* (C3) OPEN TAB - SHOW CONTENT */
+.ahead.open + .abody {
+    max-height: 600px;
+    padding: 10px;
+}
+.ahead.open {
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    height: 40px;
+    background: #bd1818;
+    color: #fff;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+
+/* WIDGET */
+.widget-wrap {
+    min-width: 600px;
+    padding: 30px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.4);
+}

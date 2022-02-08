@@ -22,7 +22,7 @@ namespace GoFpg.API.Controllers
         // GET: GlassTypes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Glasstypes.ToListAsync());
+            return View(await _context.GlassTypes.ToListAsync());
         }
 
         // GET: GlassTypes/Details/5
@@ -33,7 +33,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var glassType = await _context.Glasstypes
+            var glassType = await _context.GlassTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (glassType == null)
             {
@@ -73,7 +73,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var glassType = await _context.Glasstypes.FindAsync(id);
+            var glassType = await _context.GlassTypes.FindAsync(id);
             if (glassType == null)
             {
                 return NotFound();
@@ -124,7 +124,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var glassType = await _context.Glasstypes
+            var glassType = await _context.GlassTypes
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (glassType == null)
             {
@@ -139,15 +139,15 @@ namespace GoFpg.API.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var glassType = await _context.Glasstypes.FindAsync(id);
-            _context.Glasstypes.Remove(glassType);
+            var glassType = await _context.GlassTypes.FindAsync(id);
+            _context.GlassTypes.Remove(glassType);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool GlassTypeExists(int id)
         {
-            return _context.Glasstypes.Any(e => e.Id == id);
+            return _context.GlassTypes.Any(e => e.Id == id);
         }
     }
 }

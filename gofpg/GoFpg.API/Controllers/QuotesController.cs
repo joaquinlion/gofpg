@@ -2,6 +2,7 @@
 using GoFpg.API.Data;
 using GoFpg.API.Data.Entities;
 using GoFpg.API.Helpers;
+using GoFpg.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -15,18 +16,24 @@ namespace GoFpg.API.Controllers
         private readonly DataContext _context;
         private readonly IBlobHelper _blobHelper;
         private readonly IMailHelper _mailHelper;
+        private readonly ICombosHelper _combosHelper;
+        private readonly IConverterHelper _converterHelper;
 
-        public QuotesController(DataContext context, IBlobHelper blobHelper, IMailHelper mailHelper)
+        public QuotesController(DataContext context, IBlobHelper blobHelper, IMailHelper mailHelper, ICombosHelper combosHelper, IConverterHelper converterHelper)
         {
             _context = context;
             _blobHelper = blobHelper;
             _mailHelper = mailHelper;
+            _combosHelper = combosHelper;
+            _converterHelper = converterHelper;
         }
 
         // GET: Quotes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Quotes.ToListAsync());
+            return View(await _context.Quotes
+                .Include(x => x.GlassType)
+                .ToListAsync());
         }
 
         // GET: Quotes/Details/5
@@ -50,7 +57,12 @@ namespace GoFpg.API.Controllers
         // GET: Quotes/Create
         public IActionResult Create()
         {
-            return View();
+
+            DetailedQuoteViewModel quote = new DetailedQuoteViewModel
+            {
+                GlassTypes = _combosHelper.GetComboGlassTypes()
+            };
+            return View(quote);
         }
 
         // POST: Quotes/Create
@@ -58,34 +70,34 @@ namespace GoFpg.API.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,Address,Address2,City,Zip,State,PhoneNumber,VinNumber,Year,Make,Model,Doors,BodyClass,VehicleType,LaneDeparture,LaneKeep,GlassType,InsuranceCompany,DateOfLoss,BilledTo")] Quote quote)
+        public async Task<IActionResult> Create([Bind("Id,Email,FirstName,LastName,Address,Address2,City,Zip,State,PhoneNumber,VinNumber,Year,Make,Model,Doors,BodyClass,VehicleType,LaneDeparture,LaneKeep,GlassTypeId,GlassTypes,InsuranceCompany,DateOfLoss,BilledTo")] DetailedQuoteViewModel quote)
         {
-
-
             if (ModelState.IsValid)
             {
-                _context.Add(quote);
-                await _context.SaveChangesAsync();
+                Quote quotef = await _converterHelper.ToQuoteAsync(quote);
+
                 //return RedirectToAction(nameof(Index));
-                string fName = quote.FirstName;
-                string lName = quote.LastName;
-                string phoneNum = quote.PhoneNumber;
-                string saddress = quote.Address;
-                string aaddress = quote.Address2;
-                string city = quote.City;
-                string state = quote.State;
-                string zip = quote.Zip;
-                string vin = quote.VinNumber.ToUpper();
-                int year = quote.Year;
-                string make = quote.Make;
-                string model = quote.Model;
-                string door = quote.Doors;
-                string vehtyp = quote.BodyClass;
-                string ldws = quote.LaneDeparture;
-                string lka = quote.LaneKeep;
-                string insco = quote.InsuranceCompany;
-                string glass = quote.GlassType;
-                DateTime dol = quote.DateOfLoss;
+                string fName = quotef.FirstName;
+                string lName = quotef.LastName;
+                string phoneNum = quotef.PhoneNumber;
+                string saddress = quotef.Address;
+                string aaddress = quotef.Address2;
+                string city = quotef.City;
+                string state = quotef.State;
+                string zip = quotef.Zip;
+                string vin = quotef.VinNumber.ToUpper();
+                int year = quotef.Year;
+                string make = quotef.Make;
+                string model = quotef.Model;
+                string door = quotef.Doors;
+                string vehtyp = quotef.BodyClass;
+                string ldws = quotef.LaneDeparture;
+                string lka = quotef.LaneKeep;
+                string insco = quotef.InsuranceCompany;
+                string glass = quotef.GlassType.Description.ToString();
+                DateTime dol = quotef.DateOfLoss;
+                _context.Add(quotef);
+                await _context.SaveChangesAsync();
 
                 ////TODO
                 //if (insco == "Geico")
@@ -133,6 +145,7 @@ namespace GoFpg.API.Controllers
                 //}
                 //ModelState.AddModelError(string.Empty, responsec.Message);
             }
+            quote.GlassTypes = _combosHelper.GetComboGlassTypes();
             return View(quote);
         }
 

@@ -1,12 +1,13 @@
-﻿using System;
+﻿using GoFpg.API.Data.Entities;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace GoFpg.API.Models
 {
-    public class DetailedQuote
+    public class DetailedQuoteViewModel
     {
         public int Id { get; set; }
 
@@ -46,69 +47,76 @@ namespace GoFpg.API.Models
         public string State { get; set; }
 
         [Display(Name = "Phone Number")]
-        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(14, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "VIN Number")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [StringLength(17, MinimumLength = 17, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string VinNumber { get; set; }
 
         [Display(Name = "Year")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        [Range(1900, 2100, ErrorMessage = "Valor de módelo no válido.")]
+        //[Range(1900, 2100, ErrorMessage = "Valor de módelo no válido.")]
         public int Year { get; set; }
 
         [Display(Name = "Make")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Make { get; set; }
 
         [Display(Name = "Model")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Model { get; set; }
 
         [Display(Name = "Doors")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Doors { get; set; }
 
         [Display(Name = "Body Class")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string BodyClass { get; set; }
 
         [Display(Name = "Vehicle Type")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string VehicleType { get; set; }
 
         [Display(Name = "LDWS")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneDeparture { get; set; }
 
         [Display(Name = "Lane Keep Assist")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneKeep { get; set; }
 
         [Display(Name = "Which Glass needs to be Repaired/Replaced?")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de Cristal.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string GlassType { get; set; }
+        public int GlassTypeId { get; set; }
+
+        public IEnumerable<SelectListItem> GlassTypes { get; set; }
 
         [Display(Name = "What Insurance Company has an actual Policy with this car?")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string InsuranceCompany { get; set; }
 
-        [Display(Name = "Date of Loss")]
+        [Display(Name = "When did the damage occur?")]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime DateOfLoss { get; set; }
+
+        [Display(Name = "Billed to:?")]
+        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public string BilledTo { get; set; }
 
 
 

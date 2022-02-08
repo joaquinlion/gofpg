@@ -1,5 +1,6 @@
 ﻿using GoFpg.API.Data.Entities;
 using GoFpg.API.Helpers;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,6 +23,7 @@ namespace GoFpg.API.Data
             await _context.Database.EnsureCreatedAsync();
 
             await CheckProceduresAsync();
+            await CheckGlassTypesAsync();
             await CheckPartsAsync();
             await CheckRolesAsync();
             await CheckUsersAsync("Luis", "Salazar", "luis@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Admin);
@@ -29,6 +31,8 @@ namespace GoFpg.API.Data
             await CheckUsersAsync("Joaquin", "Leon", "joaquin@mail.com", "311 322 4620", "Calle Sol", "Apt. 2", "33034", "Fl", UserType.Sales);
 
         }
+
+        
 
         private async Task CheckUsersAsync(string firstName, string lastName, string email, string phoneNumber, string address, string address2, string zip, string state, UserType userType)
         {
@@ -79,6 +83,16 @@ namespace GoFpg.API.Data
                 _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "BRC", Description = "Back Glass Replacement" });
                 _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "DRC", Description = "Door Window Replacement" });
                 _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "QRC", Description = "Quarter Window Replacement" });
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        private async Task CheckGlassTypesAsync()
+        {
+            if (!_context.Procedures.Any())
+            {
+                _context.GlassTypes.Add(new GlassType { Description = "Windshield" });
+                _context.GlassTypes.Add(new GlassType { Description = "Back Glass" });
                 await _context.SaveChangesAsync();
             }
         }

@@ -9,8 +9,11 @@ namespace GoFpg.API.Helpers
 
         IEnumerable<SelectListItem> GetComboProcedures();
 
+        IEnumerable<SelectListItem> GetComboGlassTypes();
+
         //IEnumerable<SelectListItem> GetComboVehicleTypes();
 
         //IEnumerable<SelectListItem> GetComboBrands();
+
     }
 }

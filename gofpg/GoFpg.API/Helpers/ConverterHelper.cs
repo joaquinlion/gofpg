@@ -155,6 +155,64 @@ namespace GoFpg.API.Helpers
             };
         }
 
+        public async Task<Quote> ToQuoteAsync(DetailedQuoteViewModel model)
+        {
+            return new Quote
+            {
+                Address = model.Address,
+                Address2 = model.Address2,
+                City = model.City,
+                State = model.State,
+                Zip = model.Zip,
+                Email = model.Email,
+                FirstName = model.FirstName,
+                Id = model.Id,
+                LastName = model.LastName,
+                PhoneNumber = model.PhoneNumber,
+                VinNumber = model.VinNumber.ToUpper(),
+                Year = model.Year,
+                Make = model.Make,
+                Model = model.Model,
+                Doors = model.Doors,
+                VehicleType = model.VehicleType,
+                LaneDeparture = model.LaneDeparture,
+                LaneKeep = model.LaneKeep,
+                InsuranceCompany = model.InsuranceCompany,
+                GlassType = await _context.GlassTypes.FindAsync(model.GlassTypeId),
+                BodyClass = model.BodyClass,
+                DateOfLoss = model.DateOfLoss,
+            };
+        }
+
+        public DetailedQuoteViewModel ToDetailedQuoteViewModel(Quote user)
+        {
+            return new DetailedQuoteViewModel
+            {
+                Address = user.Address,
+                Address2 = user.Address2,
+                City = user.City,
+                State = user.State,
+                Zip = user.Zip,
+                GlassTypeId = user.GlassType.Id,
+                GlassTypes = _combosHelper.GetComboGlassTypes(),
+                Email = user.Email,
+                FirstName = user.FirstName,
+                Id = user.Id,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                VinNumber = user.VinNumber.ToUpper(),
+                Year = user.Year,
+                Make = user.Make,
+                Model = user.Model,
+                Doors = user.Doors,
+                VehicleType = user.VehicleType,
+                LaneDeparture = user.LaneDeparture,
+                LaneKeep = user.LaneKeep,
+                InsuranceCompany = user.InsuranceCompany,
+                BodyClass = user.BodyClass,
+                DateOfLoss = user.DateOfLoss,
+            };
+        }
         public async Task<Vehicle> ToVehicleAsync(VehicleViewModel model, bool isNew)
         {
             return new Vehicle

@@ -1,4 +1,4 @@
-﻿@model GoFpg.API.Data.Entities.Quote
+﻿@model GoFpg.API.Models.DetailedQuoteViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -104,9 +104,9 @@
                 <span asp-validation-for="LaneKeep" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="GlassType" class="control-label"></label>
-                <input asp-for="GlassType" class="form-control" />
-                <span asp-validation-for="GlassType" class="text-danger"></span>
+                <label asp-for="GlassTypeId" class="control-label"></label>
+                <input asp-for="GlassTypeId" class="form-control" />
+                <span asp-validation-for="GlassTypeId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="InsuranceCompany" class="control-label"></label>

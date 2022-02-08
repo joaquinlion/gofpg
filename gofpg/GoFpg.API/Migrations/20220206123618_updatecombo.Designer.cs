@@ -4,14 +4,16 @@ using GoFpg.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220206123618_updatecombo")]
+    partial class updatecombo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -948,7 +950,7 @@ namespace GoFpg.API.Migrations
             modelBuilder.Entity("GoFpg.API.Data.Entities.Quote", b =>
                 {
                     b.HasOne("GoFpg.API.Data.Entities.GlassType", "GlassType")
-                        .WithMany("Quotes")
+                        .WithMany()
                         .HasForeignKey("GlassTypeId");
 
                     b.Navigation("GlassType");
@@ -1025,11 +1027,6 @@ namespace GoFpg.API.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.GlassType", b =>
-                {
-                    b.Navigation("Quotes");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.History", b =>

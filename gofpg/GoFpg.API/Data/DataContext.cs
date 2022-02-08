@@ -17,7 +17,7 @@ namespace GoFpg.API.Data
         public DbSet<VehiclePhoto> VehiclePhotos { get; set; }
         public DbSet<Procedure> Procedures { get; set; }
         public DbSet<Part> Parts { get; set; }
-        public DbSet<GlassType> Glasstypes { get; set; }
+        public DbSet<GlassType> GlassTypes { get; set; }
         public DbSet<Quote> Quotes { get; set; }
         public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
@@ -47,7 +47,6 @@ namespace GoFpg.API.Data
             //        .HasForeignKey(guest => guest.Id)
             //        .IsRequired();
             //});
-
             modelBuilder.Entity<Detail>().Property(p => p.LaborPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Detail>().Property(p => p.SparePartsPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Procedure>().Property(p => p.Price).HasColumnType("decimal(18,4)");

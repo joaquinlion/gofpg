@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace GoFpg.API.Data.Entities
 {
@@ -94,11 +96,6 @@ namespace GoFpg.API.Data.Entities
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneKeep { get; set; }
 
-        [Display(Name = "Which Glass needs to be Repaired/Replaced?")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string GlassType { get; set; }
-
         [Display(Name = "What Insurance Company has an actual Policy with this car?")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
@@ -115,7 +112,9 @@ namespace GoFpg.API.Data.Entities
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string BilledTo { get; set; }
 
-
+        [Display(Name = "Glass Requested")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public GlassType GlassType { get; set; }
 
         //[Display(Name = "Foto")]
         //public Guid ImageId { get; set; }
