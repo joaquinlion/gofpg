@@ -61,6 +61,7 @@ namespace GoFpg.API.Controllers
             DetailedQuoteViewModel quote = new DetailedQuoteViewModel
             {
                 GlassTypes = _combosHelper.GetComboGlassTypes()
+                
             };
             return View(quote);
         }

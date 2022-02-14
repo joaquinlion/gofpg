@@ -8,19 +8,24 @@
 }
 
 #mga {
+    min-height: 480px;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
 }
 /* Add styles to the form container */
 #containe {
-    position: absolute;
     top: 0;
-    right: 0;
-    margin: 50px;
-    max-width: 300px;
-    padding: 30px;
-    background-color: white;
     z-index: 1;
     overflow: hidden;
+    position: absolute;
+    right: 0;
+    margin: 20px;
+    max-width: 300px;
+    padding: 16px;
+    background-color: white;
 }
 
 /* Full-width input fields */

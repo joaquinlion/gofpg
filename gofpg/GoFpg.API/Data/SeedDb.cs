@@ -89,10 +89,10 @@ namespace GoFpg.API.Data
 
         private async Task CheckGlassTypesAsync()
         {
-            if (!_context.Procedures.Any())
+            if (!_context.GlassTypes.Any())
             {
                 _context.GlassTypes.Add(new GlassType { Description = "Windshield" });
-                _context.GlassTypes.Add(new GlassType { Description = "Back Glass" });
+
                 await _context.SaveChangesAsync();
             }
         }

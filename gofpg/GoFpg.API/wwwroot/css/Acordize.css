@@ -35,6 +35,7 @@
     height: auto;
     background: #f2f2f2;
     color: #333;
+    -webkit-appearance: none;
 }
 
 /* (C2) OPEN TAB - DOWN ARROW */
@@ -61,8 +62,8 @@
 
 /* WIDGET */
 .widget-wrap {
-    min-width: 600px;
-    padding: 30px;
+    min-width: 350px;
+    /*padding: 30px;*/
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.4);
 }

@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "storage1": {
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/fpglass",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Storage/storageAccounts/gofpgapistorage",
       "type": "storage.azure",
       "connectionId": "Blob:ConnectionString",
       "secretStore": "AzureAppSettings"

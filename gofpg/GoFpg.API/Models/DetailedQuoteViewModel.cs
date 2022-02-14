@@ -12,42 +12,42 @@ namespace GoFpg.API.Models
         public int Id { get; set; }
 
         [Display(Name = "Email")]
-        [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [EmailAddress(ErrorMessage = "please fill with a valid email address")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Email { get; set; }
 
         [Display(Name = "First Name")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
+        [Required(ErrorMessage = "Please fill with the {0}.")]
         public string FirstName { get; set; }
 
         [Display(Name = "Last Name")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        [MaxLength(50, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
+        [Required(ErrorMessage = "Please fill with the {0}.")]
         public string LastName { get; set; }
 
         [Display(Name = "Street Adress")]
-        [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(100, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string Address { get; set; }
 
-        [Display(Name = "Apartment, Unit or Suite #")]
-        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [Display(Name = "Apt., Unit or Suite #")]
+        [MaxLength(7, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string Address2 { get; set; }
 
         [Display(Name = "City")]
-        [MaxLength(30, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(30, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string City { get; set; }
 
         [Display(Name = "Zip Code")]
-        [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(10, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string Zip { get; set; }
 
         [Display(Name = "State")]
-        [MaxLength(16, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(16, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string State { get; set; }
 
         [Display(Name = "Phone Number")]
-        [MaxLength(14, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(14, ErrorMessage = "{0} field cannot contain more than {1} characters.")]
         public string PhoneNumber { get; set; }
 
         [Display(Name = "VIN Number")]
@@ -96,20 +96,21 @@ namespace GoFpg.API.Models
         public string LaneKeep { get; set; }
 
         [Display(Name = "Which Glass needs to be Repaired/Replaced?")]
-        [Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de Cristal.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please select the Glass you need to replace/repair")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public int GlassTypeId { get; set; }
 
         public IEnumerable<SelectListItem> GlassTypes { get; set; }
 
-        [Display(Name = "What Insurance Company has an actual Policy with this car?")]
+        [Display(Name = "What Insurance Company has an actual Policy in this car?")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string InsuranceCompany { get; set; }
 
         [Display(Name = "When did the damage occur?")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime DateOfLoss { get; set; }
 
