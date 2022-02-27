@@ -1,6 +1,7 @@
 ﻿using GoFpg.API.Data.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using GoFpg.API.Models;
 
 namespace GoFpg.API.Data
 {
@@ -19,6 +20,7 @@ namespace GoFpg.API.Data
         public DbSet<Part> Parts { get; set; }
         public DbSet<GlassType> GlassTypes { get; set; }
         public DbSet<Quote> Quotes { get; set; }
+        public DbSet<RepairOrder> RepairOrders { get; set; }
         public DbSet<InsuranceClaim> InsuranceClaims { get; set; }
         public DbSet<InsuranceCompany> InsuranceCompanies { get; set; }
 
@@ -31,6 +33,7 @@ namespace GoFpg.API.Data
             modelBuilder.Entity<Part>().HasIndex(x => x.PartNo).IsUnique();
             modelBuilder.Entity<GlassType>().HasIndex(x => x.Description).IsUnique();
             modelBuilder.Entity<Quote>().HasIndex(x => x.Id).IsUnique();
+            modelBuilder.Entity<RepairOrder>().HasIndex(x => x.Id).IsUnique();
             modelBuilder.Entity<InsuranceCompany>().HasIndex(x => x.InsCompany).IsUnique();
             modelBuilder.Entity<InsuranceClaim>().HasIndex(x => x.Id).IsUnique();
             //modelBuilder.Entity<User>(typeBuilder =>
@@ -54,5 +57,7 @@ namespace GoFpg.API.Data
         }
 
         public DbSet<GoFpg.API.Models.NewClaimViewModel> NewClaimViewModel { get; set; }
+        //TODO : DELETE
+        //public DbSet<GoFpg.API.Models.RepairOrderViewModel> RepairOrderViewModel { get; set; }
     }
 }

@@ -124,7 +124,8 @@ namespace GoFpg.API.Helpers
                 //DocumentType = await _context.DocumentTypes.FindAsync(model.DocumentTypeId),
                 Email = model.Email,
                 FirstName = model.FirstName,
-                Id = model.Id,
+                Id = isNew ? 0 : model.Id,
+                //Id = model.Id,
                 ImageId = imageId,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
@@ -246,6 +247,113 @@ namespace GoFpg.API.Helpers
                 Remarks = vehicle.Remarks,
                 UserId = vehicle.User.Id,
                 VehiclePhotos = vehicle.VehiclePhotos,
+            };
+        }
+
+        public async Task<RepairOrder> ToRepairOrderAsync(RepairOrderViewModel rOrder, Guid invoiceImageId, Guid policyImageId, bool isNew)
+        {
+            return new RepairOrder
+            {
+                Id = isNew ? 0 : rOrder.Id,
+                BillTo = rOrder.BillTo,
+                HasReferral = rOrder.HasReferral,
+                HasApproval = rOrder.HasApproval,
+                HasPictures = rOrder.HasPictures,
+                HasSignature = rOrder.HasSignature,
+                HasCalibration = rOrder.HasCalibration,
+                ReferralNumber = rOrder.ReferralNumber,
+                ArePartsAvailable = rOrder.ArePartsAvailable,
+                CalibrationDone = rOrder.CalibrationDone,
+                InstallDate = rOrder.InstallDate,
+                ScheduledDate = rOrder.ScheduledDate,
+                IsInstalled = rOrder.IsInstalled,
+                IsScheduled = rOrder.IsScheduled,
+                //TagImageId = tagImageId,
+                //VinImageId = vinImageId,
+                //DamageImageId = rOrder.DamageImageId,
+                //FullDamageImageId = rOrder.FullDamageImageId,
+                //InteriorImageId = rOrder.InteriorImageId,
+                //InstalledImageId = rOrder.InstalledImageId,
+                //Installed2ImageId = rOrder.Installed2ImageId,
+                InvoiceImageId = invoiceImageId,
+                //ReportId = rOrder.ReportId,
+                PolicyImageId = policyImageId,
+                Mileage = rOrder.Mileage,
+                InstallerName = rOrder.InstallerName,
+                Procedure = rOrder.Procedure,
+                PartNumber = rOrder.PartNumber,
+                PolicyNumber = rOrder.PolicyNumber,
+            };
+        }
+        public RepairOrder ToRepairOrderAsync(RepairOrderViewModel rOrder, ImageIds imageIds, bool isNew)
+        {
+            return new RepairOrder
+            {
+                Id = isNew ? 0 : rOrder.Id,
+                BillTo = rOrder.BillTo,
+                HasReferral = rOrder.HasReferral,
+                HasApproval = rOrder.HasApproval,
+                HasPictures = rOrder.HasPictures,
+                HasSignature = rOrder.HasSignature,
+                HasCalibration = rOrder.HasCalibration,
+                ReferralNumber = rOrder.ReferralNumber,
+                ArePartsAvailable = rOrder.ArePartsAvailable,
+                CalibrationDone = rOrder.CalibrationDone,
+                InstallDate = rOrder.InstallDate,
+                ScheduledDate = rOrder.ScheduledDate,
+                IsInstalled = rOrder.IsInstalled,
+                IsScheduled = rOrder.IsScheduled,
+                //TagImageId = tagImageId,
+                //VinImageId = vinImageId,
+                //DamageImageId = rOrder.DamageImageId,
+                //FullDamageImageId = rOrder.FullDamageImageId,
+                //InteriorImageId = rOrder.InteriorImageId,
+                //InstalledImageId = rOrder.InstalledImageId,
+                //Installed2ImageId = rOrder.Installed2ImageId,
+                InvoiceImageId = imageIds.InvoiceImageId,
+                //ReportId = rOrder.ReportId,
+                PolicyImageId = imageIds.PolicyImageId,
+                Mileage = rOrder.Mileage,
+                InstallerName = rOrder.InstallerName,
+                Procedure = rOrder.Procedure,
+                PartNumber = rOrder.PartNumber,
+                PolicyNumber = rOrder.PolicyNumber,
+            };
+        }
+
+        public RepairOrderViewModel ToRepairOrderViewModel(RepairOrder rOrder)
+        {
+            return new RepairOrderViewModel
+            {
+                Id = rOrder.Id,
+                BillTo = rOrder.BillTo,
+                HasReferral = rOrder.HasReferral,
+                HasApproval = rOrder.HasApproval,
+                HasPictures = rOrder.HasPictures,
+                HasSignature = rOrder.HasSignature,
+                HasCalibration = rOrder.HasCalibration,
+                ReferralNumber = rOrder.ReferralNumber,
+                ArePartsAvailable = rOrder.ArePartsAvailable,
+                CalibrationDone = rOrder.CalibrationDone,
+                InstallDate = rOrder.InstallDate,
+                ScheduledDate = rOrder.ScheduledDate,
+                IsInstalled = rOrder.IsInstalled,
+                IsScheduled = rOrder.IsScheduled,
+                //TagImageId = rOrder.TagImageId,
+                //VinImageId = rOrder.VinImageId,
+                //DamageImageId = rOrder.DamageImageId,
+                //FullDamageImageId = rOrder.FullDamageImageId,
+                //InteriorImageId = rOrder.InteriorImageId,
+                //InstalledImageId = rOrder.InstalledImageId,
+                //Installed2ImageId = rOrder.Installed2ImageId,
+                InvoiceImageId = rOrder.InvoiceImageId,
+                //ReportId = rOrder.ReportId,
+                Mileage = rOrder.Mileage,
+                InstallerName = rOrder.InstallerName,
+                Procedure = rOrder.Procedure,
+                PartNumber = rOrder.PartNumber,
+                //PolicyImageId = rOrder.PolicyImageId,
+                PolicyNumber = rOrder.PolicyNumber,
             };
         }
     }

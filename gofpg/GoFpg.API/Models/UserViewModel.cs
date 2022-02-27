@@ -26,11 +26,6 @@ namespace GoFpg.API.Models
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LastName { get; set; }
 
-        //[Display(Name = "Documento")]
-        //[MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        //public string Document { get; set; }
-
         [Display(Name = "Street Adress")]
         [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string Address { get; set; }
@@ -55,14 +50,24 @@ namespace GoFpg.API.Models
         [MaxLength(10, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         public string PhoneNumber { get; set; }
 
-        [Display(Name = "Foto")]
-        public Guid ImageId { get; set; }
-
         [Display(Name = "Tipo de usuario")]
         public UserType UserType { get; set; }
 
         [Display(Name = "Foto")]
+        public Guid ImageId { get; set; }
+
+        [Display(Name = "Foto")]
         public IFormFile ImageFile { get; set; }
+
+        [Display(Name = "Foto")]
+        public string ImageFullPath => ImageId == Guid.Empty
+            ? $"https://localhost:44320/images/noimage.png"
+            : $"https://gofpgapistorage.blob.core.windows.net/users/{ImageId}";
+
+        //[Display(Name = "Documento")]
+        //[MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //public string Document { get; set; }
 
         //[Display(Name = "Tipo de documento")]
         //[Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
@@ -71,10 +76,7 @@ namespace GoFpg.API.Models
 
         //public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
-        [Display(Name = "Foto")]
-        public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44320/images/noimage.png"
-            : $"https://fpglass.blob.core.windows.net/users/{ImageId}";
+
 
     }
 }

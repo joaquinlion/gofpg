@@ -1,0 +1,275 @@
+﻿@model IEnumerable<GoFpg.API.Data.Entities.RepairOrder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BillTo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PolicyImageFullPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasReferral)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReferralNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PartNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArePartsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasApproval)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InvoiceImageFullPath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduledDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsScheduled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstallerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procedure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasPictures)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasSignature)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mileage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstallDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsInstalled)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasCalibration)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CalibrationDone)
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VinNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Doors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BodyClass)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VehicleType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaneDeparture)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LaneKeep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsuranceCompany)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfLoss)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BilledTo)
+        </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BillTo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PolicyNumber)
+            </td>
+            <td>
+                <img src="@item.PolicyImageFullPath" style="width: 100px; height: 100px; border-radius: 70px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasReferral)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReferralNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArePartsAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasApproval)
+            </td>
+            <td>
+                <img src="@item.InvoiceImageFullPath" style="width: 100px; height: 100px; border-radius: 70px;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduledDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsScheduled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstallerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Procedure)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasPictures)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasSignature)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mileage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstallDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsInstalled)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasCalibration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalibrationDone)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.City)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.State)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VinNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Doors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BodyClass)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VehicleType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaneDeparture)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LaneKeep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsuranceCompany)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfLoss)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BilledTo)
+        </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

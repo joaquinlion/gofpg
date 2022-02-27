@@ -11,6 +11,11 @@ namespace GoFpg.API.Helpers
 
         UserViewModel ToUserViewModel(User user);
 
+        Task<RepairOrder> ToRepairOrderAsync(RepairOrderViewModel model, Guid invoiceImageId, Guid policyImageId, bool isNew);
+        RepairOrder ToRepairOrderAsync(RepairOrderViewModel model, ImageIds imageIds, bool isNew);
+
+        RepairOrderViewModel ToRepairOrderViewModel(RepairOrder rOrder);
+
         Task<Quote> ToQuoteAsync(DetailedQuoteViewModel model);
 
         DetailedQuoteViewModel ToDetailedQuoteViewModel(Quote user);

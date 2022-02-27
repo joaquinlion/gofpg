@@ -36,7 +36,7 @@ namespace GoFpg.API.Models
         public string VinNumber { get; set; }
 
         [Display(Name = "Tag")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [StringLength(7, MinimumLength = 3, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string Tag { get; set; }
 
@@ -52,7 +52,7 @@ namespace GoFpg.API.Models
 
         [Display(Name = "Color")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Color { get; set; }
 
         [Display(Name = "Doors")]
@@ -66,18 +66,18 @@ namespace GoFpg.API.Models
         public string BodyClass { get; set; }
 
         [Display(Name = "Vehicle Type")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
+        [MaxLength(90, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string VehicleType { get; set; }
 
         [Display(Name = "LDWS")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneDeparture { get; set; }
 
         [Display(Name = "Lane Keep Assist")]
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LaneKeep { get; set; }
 
         [Display(Name = "ErrorCode")]

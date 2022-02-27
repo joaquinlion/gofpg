@@ -32,6 +32,20 @@ namespace GoFpg.API.Helpers
         {
             Stream stream = file.OpenReadStream();
             Guid name = Guid.NewGuid();
+
+            CloudBlobContainer container = _blobClient.GetContainerReference(containerName);
+            CloudBlockBlob blockBlob = container.GetBlockBlobReference($"{name}");
+            await blockBlob.UploadFromStreamAsync(stream);
+            return name;
+        }
+        public async Task<string> UploadBlobAsync2(IFormFile file, string containerName)
+        {
+            Stream stream = file.OpenReadStream();
+            string ext = "." + System.IO.Path.GetExtension(file.FileName);
+            if (ext == ".") { ext = ""; }
+            else if (ext.StartsWith("..")) { ext = ext.Replace("..", "."); }
+
+            string name = $"{Guid.NewGuid()}{ext}";
             CloudBlobContainer container = _blobClient.GetContainerReference(containerName);
             CloudBlockBlob blockBlob = container.GetBlockBlobReference($"{name}");
             await blockBlob.UploadFromStreamAsync(stream);

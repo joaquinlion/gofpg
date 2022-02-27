@@ -4,14 +4,16 @@ using GoFpg.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220225165603_ROentity")]
+    partial class ROentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -454,83 +456,6 @@ namespace GoFpg.API.Migrations
                         .IsUnique();
 
                     b.ToTable("Quotes");
-                });
-
-            modelBuilder.Entity("GoFpg.API.Data.Entities.RepairOrder", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("ArePartsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("BillTo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("CalibrationDone")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasApproval")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasCalibration")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasPictures")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasReferral")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasSignature")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("InstallDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("InstallerName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("InvoiceImageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsInstalled")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsScheduled")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Mileage")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PartNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("PolicyImageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PolicyNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Procedure")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ReferralNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ScheduledDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("Id")
-                        .IsUnique();
-
-                    b.ToTable("RepairOrders");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.User", b =>

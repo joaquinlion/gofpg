@@ -4,14 +4,16 @@ using GoFpg.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220225165825_rorder")]
+    partial class rorder
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -472,6 +474,12 @@ namespace GoFpg.API.Migrations
                     b.Property<bool>("CalibrationDone")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("DamageImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FullDamageImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("HasApproval")
                         .HasColumnType("bit");
 
@@ -490,8 +498,17 @@ namespace GoFpg.API.Migrations
                     b.Property<DateTime>("InstallDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("Installed2ImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InstalledImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("InstallerName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InteriorImageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("InvoiceImageId")
                         .HasColumnType("uniqueidentifier");
@@ -509,12 +526,6 @@ namespace GoFpg.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("PolicyImageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("PolicyNumber")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Procedure")
                         .HasColumnType("nvarchar(max)");
 
@@ -522,8 +533,17 @@ namespace GoFpg.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("ReportId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("ScheduledDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<Guid>("TagImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VinImageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 

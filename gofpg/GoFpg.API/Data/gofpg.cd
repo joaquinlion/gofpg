@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GoFpg.API.Data.Entities.User">
+    <Position X="3" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAEgAABAAgIAIAAAACAAAQAAACAECQAAABCAAAAg=</HashCode>
+      <FileName>Data\Entities\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.UserRole">
+    <Position X="0.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Entities\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.Vehicle">
+    <Position X="5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAHAABEBJAwAAIAQAAgAAAAAIAAIAAAQAgBgQICAAA=</HashCode>
+      <FileName>Data\Entities\Vehicle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.VehiclePhoto">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAABAAAAAEAQAAAAAAAAAA=</HashCode>
+      <FileName>Data\Entities\VehiclePhoto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.History">
+    <Position X="6.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIrAQCAEIABAAAgAIAAAQCABCBAQBBFAAAAACgCEEQ=</HashCode>
+      <FileName>Data\Entities\History.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.Detail">
+    <Position X="8.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAIIAAAAAgABAAAAAAAAAAQAAAAAACAAAQAAA=</HashCode>
+      <FileName>Data\Entities\Detail.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.Quote">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACACBEAABCAQAAIIAIAgSAIAAIAIAAACAAgBBAICAAg=</HashCode>
+      <FileName>Data\Entities\Quote.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoFpg.API.Data.Entities.RepairOrder">
+    <Position X="13.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAJKAwAAAAGgAAAgQAAAAAQAACgQAAAIAAIAIEAERAA=</HashCode>
+      <FileName>Data\Entities\RepairOrder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="GoFpg.API.Data.Entities.UserType" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\Entities\UserType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

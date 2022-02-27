@@ -1,0 +1,122 @@
+﻿@model GoFpg.API.Data.Entities.RepairOrder
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>RepairOrder</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="BillTo" class="control-label"></label>
+                <input asp-for="BillTo" class="form-control" />
+                <span asp-validation-for="BillTo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyNumber" class="control-label"></label>
+                <input asp-for="PolicyNumber" class="form-control" />
+                <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasReferral" /> @Html.DisplayNameFor(model => model.HasReferral)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReferralNumber" class="control-label"></label>
+                <input asp-for="ReferralNumber" class="form-control" />
+                <span asp-validation-for="ReferralNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PartNumber" class="control-label"></label>
+                <input asp-for="PartNumber" class="form-control" />
+                <span asp-validation-for="PartNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ArePartsAvailable" /> @Html.DisplayNameFor(model => model.ArePartsAvailable)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasApproval" /> @Html.DisplayNameFor(model => model.HasApproval)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvoiceImageId" class="control-label"></label>
+                <input asp-for="InvoiceImageId" class="form-control" />
+                <span asp-validation-for="InvoiceImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ScheduledDate" class="control-label"></label>
+                <input asp-for="ScheduledDate" class="form-control" />
+                <span asp-validation-for="ScheduledDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsScheduled" /> @Html.DisplayNameFor(model => model.IsScheduled)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstallerName" class="control-label"></label>
+                <input asp-for="InstallerName" class="form-control" />
+                <span asp-validation-for="InstallerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Procedure" class="control-label"></label>
+                <input asp-for="Procedure" class="form-control" />
+                <span asp-validation-for="Procedure" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasPictures" /> @Html.DisplayNameFor(model => model.HasPictures)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasSignature" /> @Html.DisplayNameFor(model => model.HasSignature)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mileage" class="control-label"></label>
+                <input asp-for="Mileage" class="form-control" />
+                <span asp-validation-for="Mileage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InstallDate" class="control-label"></label>
+                <input asp-for="InstallDate" class="form-control" />
+                <span asp-validation-for="InstallDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsInstalled" /> @Html.DisplayNameFor(model => model.IsInstalled)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasCalibration" /> @Html.DisplayNameFor(model => model.HasCalibration)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="CalibrationDone" /> @Html.DisplayNameFor(model => model.CalibrationDone)
+                </label>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
