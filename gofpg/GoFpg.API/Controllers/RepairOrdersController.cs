@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GoFpg.API.Data;
+using GoFpg.API.Data.Entities;
+using GoFpg.API.Helpers;
+using GoFpg.API.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using GoFpg.API.Data;
-using GoFpg.API.Data.Entities;
-using GoFpg.API.Models;
-using GoFpg.API.Helpers;
 
 namespace GoFpg.API.Controllers
 {
@@ -40,7 +37,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var repairOrder = await _context.RepairOrders
+            RepairOrder repairOrder = await _context.RepairOrders
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (repairOrder == null)
             {
@@ -53,28 +50,16 @@ namespace GoFpg.API.Controllers
         // GET: RepairOrders/Create
         public IActionResult Create()
         {
-            RepairOrderViewModel model = new RepairOrderViewModel
-            {
-                //DocumentTypes = _combosHelper.GetComboDocumentTypes()
-            };
+            RepairOrderViewModel model = new RepairOrderViewModel();
+
             return View(model);
         }
 
         // POST: RepairOrders/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RepairOrderViewModel model)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(repairOrder);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(repairOrder);
-
             if (ModelState.IsValid)
             {
                 ImageIds imageIds = await UploadBlobs(model);
@@ -92,14 +77,12 @@ namespace GoFpg.API.Controllers
                 //}
 
                 //RepairOrder user = await _converterHelper.ToRepairOrderAsync(model, invoiceImageId, policyImageId, true);
-                RepairOrder user =  _converterHelper.ToRepairOrderAsync(model, imageIds, true);
-                _context.Add(user);
+                RepairOrder rOrder = _converterHelper.ToRepairOrderAsync(model, imageIds, true);
+                _context.Add(rOrder);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-
-            //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(nameof(Index));
         }
 
@@ -117,6 +100,13 @@ namespace GoFpg.API.Controllers
             {
                 ids.InvoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
             }
+            if (model?.PartImageFile != null)
+            {
+                ids.InvoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
+            }
+
+
+
 
             return ids;
         }
@@ -128,7 +118,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var repairOrder = await _context.RepairOrders.FindAsync(id);
+            RepairOrder repairOrder = await _context.RepairOrders.FindAsync(id);
             if (repairOrder == null)
             {
                 return NotFound();
@@ -179,7 +169,7 @@ namespace GoFpg.API.Controllers
                 return NotFound();
             }
 
-            var repairOrder = await _context.RepairOrders
+            RepairOrder repairOrder = await _context.RepairOrders
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (repairOrder == null)
             {
@@ -194,7 +184,7 @@ namespace GoFpg.API.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var repairOrder = await _context.RepairOrders.FindAsync(id);
+            RepairOrder repairOrder = await _context.RepairOrders.FindAsync(id);
             _context.RepairOrders.Remove(repairOrder);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

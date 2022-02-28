@@ -5,7 +5,7 @@ namespace GoFpg.API.Data.Entities
 {
     public class RepairOrder
     {
-        public new int Id { get; set; }
+        public int Id { get; set; }
 
         [Display(Name = "Bill To")]
         public string BillTo { get; set; }
