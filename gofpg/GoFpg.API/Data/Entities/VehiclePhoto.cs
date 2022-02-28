@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoFpg.API.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace GoFpg.API.Data.Entities
@@ -15,7 +16,7 @@ namespace GoFpg.API.Data.Entities
 
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44320/images/noimage.png"
-            : $"https://gofpgapistorage.blob.core.windows.net/vehicles/{ImageId}";
+            ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
+            : $"{Constants.BaseUrlBlobImages}/vehicles/{ImageId}";
     }
 }

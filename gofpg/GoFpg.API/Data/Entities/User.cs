@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GoFpg.API.Helpers;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -42,8 +43,8 @@ namespace GoFpg.API.Data.Entities
 
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44320/images/noimage.png"
-            : $"https://gofpgapistorage.blob.core.windows.net/users/{ImageId}";
+            ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
+            : $"{Constants.BaseUrlBlobImages}/users/{ImageId}";
 
         [Display(Name = "Tipo de usuario")]
         public UserType UserType { get; set; }

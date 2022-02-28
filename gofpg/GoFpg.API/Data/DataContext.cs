@@ -53,6 +53,7 @@ namespace GoFpg.API.Data
             modelBuilder.Entity<Detail>().Property(p => p.LaborPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Detail>().Property(p => p.SparePartsPrice).HasColumnType("decimal(18,4)");
             modelBuilder.Entity<Procedure>().Property(p => p.Price).HasColumnType("decimal(18,4)");
+            modelBuilder.Entity<Part>().Property(p => p.Price).HasColumnType("decimal(18,4)");
 
         }
 

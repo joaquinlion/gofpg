@@ -14,7 +14,7 @@ namespace GoFpg.API.Helpers
         Task<RepairOrder> ToRepairOrderAsync(RepairOrderViewModel model, Guid invoiceImageId, Guid policyImageId, bool isNew);
         RepairOrder ToRepairOrderAsync(RepairOrderViewModel model, ImageIds imageIds, bool isNew);
 
-        RepairOrderViewModel ToRepairOrderViewModel(RepairOrder rOrder);
+        RepairOrderViewModel ToRepairOrderViewModel(RepairOrder rOrder, ImageIds imageIds);
 
         Task<Quote> ToQuoteAsync(DetailedQuoteViewModel model);
 

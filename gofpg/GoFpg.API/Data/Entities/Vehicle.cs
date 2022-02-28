@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoFpg.API.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -88,7 +89,7 @@ namespace GoFpg.API.Data.Entities
 
         [Display(Name = "Foto")]
         public string ImageFullPath => VehiclePhotos == null || VehiclePhotos.Count == 0
-            ? $"https://localhost:44320/images/noimage.png"
+            ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
             : VehiclePhotos.FirstOrDefault().ImageFullPath;
 
         public ICollection<History> Histories { get; set; }

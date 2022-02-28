@@ -1,4 +1,5 @@
 ﻿using GoFpg.API.Data.Entities;
+using GoFpg.API.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -61,8 +62,8 @@ namespace GoFpg.API.Models
 
         [Display(Name = "Foto")]
         public string ImageFullPath => ImageId == Guid.Empty
-            ? $"https://localhost:44320/images/noimage.png"
-            : $"https://gofpgapistorage.blob.core.windows.net/users/{ImageId}";
+            ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
+            : $"{Constants.BaseUrlBlobImages}/users/{ImageId}";
 
         //[Display(Name = "Documento")]
         //[MaxLength(20, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]

@@ -139,7 +139,7 @@ namespace GoFpg.API.Models
 
         //[Display(Name = "Foto")]
         //public string ImageFullPath => ImageId == Guid.Empty
-        //    ? $"https://localhost:44320/images/noimage.png"
+        //    ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
         //    : $"https://fpglass.blob.core.windows.net/users/{ImageId}";
     }
 }
