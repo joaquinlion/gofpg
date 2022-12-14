@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 namespace GoFpg.API.Data.Entities
 {
     public class Quote
-    {
-        public int Id { get; set; }
+    { 
+        public int QuoteId { get; set; }
 
         [Display(Name = "Email")]
         [EmailAddress(ErrorMessage = "Debes introducir un email válido.")]
@@ -26,6 +27,11 @@ namespace GoFpg.API.Data.Entities
         [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string LastName { get; set; }
+        [Display(Name = "Customer Name")]
+        public string CustomerName => $"{FirstName} {LastName}";
+
+        [Display(Name = "Customer Address")]
+        public string CustoAddress => $"{Address} Apt. {Address2} {City} {State} {Zip}";
 
         [Display(Name = "Street Adress")]
         [MaxLength(100, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
@@ -55,6 +61,9 @@ namespace GoFpg.API.Data.Entities
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         [StringLength(17, MinimumLength = 17, ErrorMessage = "El campo {0} debe tener {1} carácteres.")]
         public string VinNumber { get; set; }
+
+        [Display(Name = "Vehicle")]
+        public string CustomerVehicle => $"{Year} {Make} {Model} {Doors} Doors {BodyClass}";
 
         [Display(Name = "Year")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
@@ -107,35 +116,15 @@ namespace GoFpg.API.Data.Entities
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime DateOfLoss { get; set; }
 
-        [Display(Name = "Billed to:?")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string BilledTo { get; set; }
-
         [Display(Name = "Glass Requested")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public GlassType GlassType { get; set; }
 
-        //[Display(Name = "Foto")]
-        //public Guid ImageId { get; set; }
-
-        //[Display(Name = "Tipo de usuario")]
-        //public UserType UserType { get; set; }
-
-        //[Display(Name = "Foto")]
-        //public IFormFile ImageFile { get; set; }
-
-        //[Display(Name = "Tipo de documento")]
-        //[Range(1, int.MaxValue, ErrorMessage = "Debes seleccionar un tipo de documento.")]
+        [Display(Name = "Repair Order")]
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        //public int DocumentTypeId { get; set; }
+        public RepairOrder RepairOrder { get; set; }
 
-        //public IEnumerable<SelectListItem> DocumentTypes { get; set; }
 
-        //[Display(Name = "Foto")]
-        //public string ImageFullPath => ImageId == Guid.Empty
-        //    ? $"{Constants.BaseUrlLocalImages}/images/noimage.png"
-        //    : $"https://fpglass.blob.core.windows.net/users/{ImageId}";
     }
 }
 

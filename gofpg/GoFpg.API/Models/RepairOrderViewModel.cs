@@ -39,7 +39,7 @@ namespace GoFpg.API.Models
         public string ReferralNumber { get; set; }
 
         [Display(Name = "Part Number")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string PartNumber { get; set; }
 
         [Display(Name = "Parts Available")]
@@ -49,7 +49,7 @@ namespace GoFpg.API.Models
         public bool HasApproval { get; set; }
 
         [Display(Name = "Part Invoice Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile PartImageFile { get; set; }
 
         [Display(Name = "Part Invoice")]
@@ -73,7 +73,7 @@ namespace GoFpg.API.Models
         public string Procedure { get; set; }
 
         [Display(Name = "Tag Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile TagImageFile { get; set; }
 
         [Display(Name = "Tag Picture")]
@@ -85,7 +85,7 @@ namespace GoFpg.API.Models
             : $"{Constants.BaseUrlBlobImages}/stories/{TagImageId}";
 
         [Display(Name = "Damage Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile DamageImageFile { get; set; }
 
         [Display(Name = "Damage Picture")]
@@ -97,7 +97,7 @@ namespace GoFpg.API.Models
             : $"{Constants.BaseUrlBlobImages}/stories/{DamageImageId}";
 
         [Display(Name = "Full Glass Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile FullGlassImageFile { get; set; }
 
         [Display(Name = "Full Glass Picture")]
@@ -109,7 +109,7 @@ namespace GoFpg.API.Models
             : $"{Constants.BaseUrlBlobImages}/stories/{FullDamageImageId}";
 
         [Display(Name = "Vin Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile VinImageFile { get; set; }
 
         [Display(Name = "VIN Plate Picture")]
@@ -121,9 +121,9 @@ namespace GoFpg.API.Models
             : $"{Constants.BaseUrlBlobImages}/stories/{VinImageId}";
 
         [Display(Name = "Interior Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile InteriorImageFile { get; set; }
-
+        
         [Display(Name = "Interior Picture")]
         public Guid InteriorImageId { get; set; }
 
@@ -145,9 +145,9 @@ namespace GoFpg.API.Models
         public DateTime InstallDate { get; set; }
 
         [Display(Name = "Port Work Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile InstalledImageFile { get; set; }
-
+        
         [Display(Name = "Post Work Picture")]
         public Guid InstalledImageId { get; set; }
 
@@ -157,9 +157,9 @@ namespace GoFpg.API.Models
             : $"{Constants.BaseUrlBlobImages}/stories/{InstalledImageId}";
 
         [Display(Name = "Part Installed Pic")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile Installed2ImageFile { get; set; }
-
+        
         [Display(Name = "Part Installed Picture")]
         public Guid Installed2ImageId { get; set; }
 
@@ -175,7 +175,7 @@ namespace GoFpg.API.Models
         public bool HasCalibration { get; set; }
 
         [Display(Name = "Calibration Report")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile ReportFile { get; set; }
 
         [Display(Name = "Calibration Report")]
@@ -190,7 +190,7 @@ namespace GoFpg.API.Models
         public bool CalibrationDone { get; set; }
 
         [Display(Name = "Signed RO")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public IFormFile SignedROFile { get; set; }
 
         [Display(Name = "Signed RO")]

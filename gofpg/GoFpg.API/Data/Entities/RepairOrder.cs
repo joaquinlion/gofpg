@@ -1,12 +1,15 @@
 ﻿using GoFpg.API.Helpers;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GoFpg.API.Data.Entities
 {
     public class RepairOrder
     {
-        public int Id { get; set; }
+        public int RepairOrderId { get; set; }
+
+        public Quote Quote { get; set; }
 
         [Display(Name = "Bill To")]
         public string BillTo { get; set; }
@@ -30,7 +33,7 @@ namespace GoFpg.API.Data.Entities
         public string ReferralNumber { get; set; }
 
         [Display(Name = "Part Number")]
-        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string PartNumber { get; set; }
 
         [Display(Name = "Parts Available")]

@@ -13,52 +13,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.GlassType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address2)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Zip)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
+                @Html.DisplayNameFor(model => model.CustomerVehicle)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.VinNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Year)
+                @Html.DisplayNameFor(model => model.CustomerName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Make)
+                @Html.DisplayNameFor(model => model.PhoneNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Model)
+                @Html.DisplayNameFor(model => model.CustoAddress)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Doors)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BodyClass)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VehicleType)
+                @Html.DisplayNameFor(model => model.Email)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.LaneDeparture)
@@ -67,16 +40,10 @@
                 @Html.DisplayNameFor(model => model.LaneKeep)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.GlassType)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.InsuranceCompany)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfLoss)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BilledTo)
             </th>
             <th></th>
         </tr>
@@ -85,52 +52,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.GlassType.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zip)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                @Html.DisplayFor(modelItem => item.CustomerVehicle)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.VinNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Year)
+                @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Make)
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Model)
+                @Html.DisplayFor(modelItem => item.CustoAddress)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Doors)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BodyClass)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.VehicleType)
+                @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.LaneDeparture)
@@ -139,21 +79,15 @@
                 @Html.DisplayFor(modelItem => item.LaneKeep)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.GlassType.Description)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.InsuranceCompany)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.DateOfLoss)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BilledTo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.QuoteId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.QuoteId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.QuoteId">Delete</a>
             </td>
         </tr>
 }

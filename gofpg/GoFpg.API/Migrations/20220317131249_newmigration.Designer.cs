@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoFpg.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220227005604_updaterotable")]
-    partial class updaterotable
+    [Migration("20220317131249_newmigration")]
+    partial class newmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -316,7 +316,7 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal(18,4)");
 
                     b.HasKey("Id");
 
@@ -356,7 +356,7 @@ namespace GoFpg.API.Migrations
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.Quote", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("QuoteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -368,10 +368,6 @@ namespace GoFpg.API.Migrations
                     b.Property<string>("Address2")
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
-
-                    b.Property<string>("BilledTo")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("BodyClass")
                         .HasMaxLength(100)
@@ -448,11 +444,11 @@ namespace GoFpg.API.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.HasKey("Id");
+                    b.HasKey("QuoteId");
 
                     b.HasIndex("GlassTypeId");
 
-                    b.HasIndex("Id")
+                    b.HasIndex("QuoteId")
                         .IsUnique();
 
                     b.ToTable("Quotes");
@@ -460,10 +456,8 @@ namespace GoFpg.API.Migrations
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.RepairOrder", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<int>("RepairOrderId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("ArePartsAvailable")
                         .HasColumnType("bit");
@@ -473,6 +467,12 @@ namespace GoFpg.API.Migrations
 
                     b.Property<bool>("CalibrationDone")
                         .HasColumnType("bit");
+
+                    b.Property<Guid>("DamageImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("FullDamageImageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("HasApproval")
                         .HasColumnType("bit");
@@ -492,8 +492,17 @@ namespace GoFpg.API.Migrations
                     b.Property<DateTime>("InstallDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("Installed2ImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("InstalledImageId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("InstallerName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InteriorImageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("InvoiceImageId")
                         .HasColumnType("uniqueidentifier");
@@ -508,7 +517,6 @@ namespace GoFpg.API.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("PartNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("PolicyImageId")
@@ -524,12 +532,24 @@ namespace GoFpg.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("ReportId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("ScheduledDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.Property<Guid>("SignedROImageId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.HasIndex("Id")
+                    b.Property<Guid>("TagImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VinImageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RepairOrderId");
+
+                    b.HasIndex("RepairOrderId")
                         .IsUnique();
 
                     b.ToTable("RepairOrders");
@@ -1033,6 +1053,17 @@ namespace GoFpg.API.Migrations
                     b.Navigation("GlassType");
                 });
 
+            modelBuilder.Entity("GoFpg.API.Data.Entities.RepairOrder", b =>
+                {
+                    b.HasOne("GoFpg.API.Data.Entities.Quote", "Quote")
+                        .WithOne("RepairOrder")
+                        .HasForeignKey("GoFpg.API.Data.Entities.RepairOrder", "RepairOrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quote");
+                });
+
             modelBuilder.Entity("GoFpg.API.Data.Entities.Vehicle", b =>
                 {
                     b.HasOne("GoFpg.API.Data.Entities.User", "User")
@@ -1124,6 +1155,11 @@ namespace GoFpg.API.Migrations
             modelBuilder.Entity("GoFpg.API.Data.Entities.Procedure", b =>
                 {
                     b.Navigation("Details");
+                });
+
+            modelBuilder.Entity("GoFpg.API.Data.Entities.Quote", b =>
+                {
+                    b.Navigation("RepairOrder");
                 });
 
             modelBuilder.Entity("GoFpg.API.Data.Entities.User", b =>

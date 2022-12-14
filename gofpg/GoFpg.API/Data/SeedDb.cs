@@ -60,8 +60,6 @@ namespace GoFpg.API.Data
 
                 string token = await _userHelper.GenerateEmailConfirmationTokenAsync(user);
                 await _userHelper.ConfirmEmailAsync(user, token);
-
-
             }
         }
 
@@ -76,13 +74,10 @@ namespace GoFpg.API.Data
         {
             if (!_context.Procedures.Any())
             {
-                _context.Procedures.Add(new Procedure { Price = 350, ProcedureCode = "LDI", Description = "LDWS & LKA Calibration" });
-                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "WRI", Description = "Windshield Replacement" });
-                _context.Procedures.Add(new Procedure { Price = 150, ProcedureCode = "LDC", Description = "LDWS & LKA Calibration C" });
-                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "WRC", Description = "Windshield Replacement C" });
-                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "BRC", Description = "Back Glass Replacement" });
-                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "DRC", Description = "Door Window Replacement" });
-                _context.Procedures.Add(new Procedure { Price = 125, ProcedureCode = "QRC", Description = "Quarter Window Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "WRC", Description = "Windshield Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "BRC", Description = "Back Glass Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "DRC", Description = "Door Window Replacement" });
+                _context.Procedures.Add(new Procedure { Price = 40, ProcedureCode = "QRC", Description = "Quarter Window Replacement" });
                 await _context.SaveChangesAsync();
             }
         }

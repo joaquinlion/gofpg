@@ -4,6 +4,7 @@ using GoFpg.API.Helpers;
 using GoFpg.API.Helpers.VINdecode;
 using GoFpg.API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -29,6 +30,7 @@ namespace GoFpg.API.Controllers
             _combosHelper = combosHelper;
             _converterHelper = converterHelper;
             _blobHelper = blobHelper;
+            
         }
 
         public async Task<IActionResult> Index()
@@ -37,6 +39,14 @@ namespace GoFpg.API.Controllers
                 //.Include(x => x.DocumentType)
                 .Include(x => x.Vehicles)
                 .Where(x => x.UserType == UserType.User)
+                .ToListAsync());
+        }
+        public async Task<IActionResult> Index2()
+        {
+            return View(await _context.Users
+                //.Include(x => x.DocumentType)
+                .Include(x => x.Vehicles)
+                .Where(x => x.UserType == UserType.Admin)
                 .ToListAsync());
         }
         public IActionResult Create()
@@ -60,17 +70,12 @@ namespace GoFpg.API.Controllers
                 {
                     imageId = await _blobHelper.UploadBlobAsync(model.ImageFile, "users");
                 }
-
                 User user = await _converterHelper.ToUserAsync(model, imageId, true);
                 user.UserType = UserType.User;
                 await _userHelper.AddUserAsync(user, "123456");
                 await _userHelper.AddUserToRoleAsync(user, user.UserType.ToString());
-
-
-
                 return RedirectToAction(nameof(Index));
             }
-
             //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }
@@ -105,10 +110,12 @@ namespace GoFpg.API.Controllers
                 }
 
                 User user = await _converterHelper.ToUserAsync(model, imageId, false);
+                
+                string roleName = model.UserType.ToString();
+                await _userHelper.AddUserToRoleAsync(user, roleName);
                 await _userHelper.UpdateUserAsync(user);
                 return RedirectToAction(nameof(Index));
             }
-
             //model.DocumentTypes = _combosHelper.GetComboDocumentTypes();
             return View(model);
         }

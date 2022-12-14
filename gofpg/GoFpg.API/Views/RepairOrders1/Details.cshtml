@@ -11,6 +11,12 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quote)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quote.Email)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BillTo)
         </dt>
         <dd class = "col-sm-10">
@@ -21,6 +27,12 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.PolicyNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PolicyImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PolicyImageId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.HasReferral)
@@ -83,6 +95,36 @@
             @Html.DisplayFor(model => model.Procedure)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TagImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TagImageId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DamageImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DamageImageId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FullDamageImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullDamageImageId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VinImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VinImageId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InteriorImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InteriorImageId)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.HasPictures)
         </dt>
         <dd class = "col-sm-10">
@@ -107,6 +149,18 @@
             @Html.DisplayFor(model => model.InstallDate)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InstalledImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InstalledImageId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Installed2ImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Installed2ImageId)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IsInstalled)
         </dt>
         <dd class = "col-sm-10">
@@ -119,16 +173,26 @@
             @Html.DisplayFor(model => model.HasCalibration)
         </dd>
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ReportId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ReportId)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CalibrationDone)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.CalibrationDone)
         </dd>
-        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SignedROImageId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SignedROImageId)
+        </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="WorkOrder">WO</a> |
     <a asp-action="Edit" asp-route-id="@Model.RepairOrderId">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

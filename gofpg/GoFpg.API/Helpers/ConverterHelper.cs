@@ -167,7 +167,7 @@ namespace GoFpg.API.Helpers
                 Zip = model.Zip,
                 Email = model.Email,
                 FirstName = model.FirstName,
-                Id = model.Id,
+                QuoteId = model.Id,
                 LastName = model.LastName,
                 PhoneNumber = model.PhoneNumber,
                 VinNumber = model.VinNumber.ToUpper(),
@@ -198,7 +198,7 @@ namespace GoFpg.API.Helpers
                 GlassTypes = _combosHelper.GetComboGlassTypes(),
                 Email = user.Email,
                 FirstName = user.FirstName,
-                Id = user.Id,
+                Id = user.QuoteId,
                 LastName = user.LastName,
                 PhoneNumber = user.PhoneNumber,
                 VinNumber = user.VinNumber.ToUpper(),
@@ -254,7 +254,7 @@ namespace GoFpg.API.Helpers
         {
             return new RepairOrder
             {
-                Id = isNew ? 0 : rOrder.Id,
+                RepairOrderId = isNew ? 0 : rOrder.Id,
                 BillTo = rOrder.BillTo,
                 HasReferral = rOrder.HasReferral,
                 HasApproval = rOrder.HasApproval,
@@ -289,7 +289,7 @@ namespace GoFpg.API.Helpers
         {
             return new RepairOrder
             {
-                Id = isNew ? 0 : rOrder.Id,
+                RepairOrderId = isNew ? 0 : rOrder.Id,
                 BillTo = rOrder.BillTo,
                 HasReferral = rOrder.HasReferral,
                 HasApproval = rOrder.HasApproval,
@@ -326,7 +326,7 @@ namespace GoFpg.API.Helpers
         {
             return new RepairOrderViewModel
             {
-                Id = rOrder.Id,
+                Id = rOrder.RepairOrderId,
                 BillTo = rOrder.BillTo,
                 HasReferral = rOrder.HasReferral,
                 HasApproval = rOrder.HasApproval,

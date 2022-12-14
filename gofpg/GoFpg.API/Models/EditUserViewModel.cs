@@ -1,4 +1,5 @@
-﻿using GoFpg.API.Helpers;
+﻿using GoFpg.API.Data.Entities;
+using GoFpg.API.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -53,5 +54,6 @@ namespace GoFpg.API.Models
 
         [Display(Name = "User Image Image")]
         public IFormFile ImageFile { get; set; }
+
     }
 }

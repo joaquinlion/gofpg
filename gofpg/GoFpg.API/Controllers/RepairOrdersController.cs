@@ -4,6 +4,7 @@ using GoFpg.API.Helpers;
 using GoFpg.API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -38,7 +39,7 @@ namespace GoFpg.API.Controllers
             }
 
             RepairOrder repairOrder = await _context.RepairOrders
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.RepairOrderId == id);
             if (repairOrder == null)
             {
                 return NotFound();
@@ -62,22 +63,22 @@ namespace GoFpg.API.Controllers
         {
             if (ModelState.IsValid)
             {
-                ImageIds imageIds = await UploadBlobs(model);
-                //Guid invoiceImageId = Guid.Empty;
-                //Guid policyImageId = Guid.Empty;
+                //ImageIds imageIds = await UploadBlobs(model);
+                Guid invoiceImageId = Guid.Empty;
+                Guid policyImageId = Guid.Empty;
 
-                ////if (model.PartImageFile  model.PolicyImageFile != null)
-                //if (model?.PolicyImageFile != null)
-                //{
-                //    policyImageId = await _blobHelper.UploadBlobAsync(model.PolicyImageFile, "stories");
-                //}
-                //if (model?.PartImageFile != null)
-                //{
-                //    invoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
-                //}
+                //if (model.PartImageFile  model.PolicyImageFile != null)
+                if (model?.PolicyImageFile != null)
+                {
+                    policyImageId = await _blobHelper.UploadBlobAsync(model.PolicyImageFile, "stories");
+                }
+                if (model?.PartImageFile != null)
+                {
+                    invoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
+                }
 
-                //RepairOrder user = await _converterHelper.ToRepairOrderAsync(model, invoiceImageId, policyImageId, true);
-                RepairOrder rOrder = _converterHelper.ToRepairOrderAsync(model, imageIds, true);
+                RepairOrder rOrder = await _converterHelper.ToRepairOrderAsync(model, invoiceImageId, policyImageId, true);
+                //RepairOrder rOrder = _converterHelper.ToRepairOrderAsync(model, imageIds, true);
                 _context.Add(rOrder);
                 await _context.SaveChangesAsync();
 
@@ -91,7 +92,7 @@ namespace GoFpg.API.Controllers
             //TODO: subir el resto de las imagenes
             //TODO: subir todas las imagnees al mismo tiempo(lrivas)
             //TODO: debe soportar que se suban la mayoria de las fotos, aun si hay crash
-            ImageIds ids = new ImageIds();
+            ImageIds ids = new();
             if (model?.PolicyImageFile != null)
             {
                 ids.PolicyImageId = await _blobHelper.UploadBlobAsync(model.PolicyImageFile, "stories");
@@ -100,11 +101,43 @@ namespace GoFpg.API.Controllers
             {
                 ids.InvoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
             }
-            if (model?.PartImageFile != null)
+            if (model?.TagImageFile != null)
             {
-                ids.InvoiceImageId = await _blobHelper.UploadBlobAsync(model.PartImageFile, "stories");
+                ids.TagImageId = await _blobHelper.UploadBlobAsync(model.TagImageFile, "stories");
             }
-
+            if (model?.VinImageFile != null)
+            {
+                ids.VinImageId = await _blobHelper.UploadBlobAsync(model.VinImageFile, "stories");
+            }
+            if (model?.DamageImageFile != null)
+            {
+                ids.DamageImageId = await _blobHelper.UploadBlobAsync(model.DamageImageFile, "stories");
+            }
+            if (model?.FullGlassImageFile != null)
+            {
+                ids.FullDamageImageId = await _blobHelper.UploadBlobAsync(model.FullGlassImageFile, "stories");
+            }
+            if (model?.InteriorImageFile != null)
+            {
+                ids.InteriorImageId = await _blobHelper.UploadBlobAsync(model.InteriorImageFile, "stories");
+            }
+            if (model?.InstalledImageFile != null)
+            {
+                ids.InstalledImageId = await _blobHelper.UploadBlobAsync(model.InstalledImageFile, "stories");
+            }
+            if (model?.Installed2ImageFile != null)
+            {
+                ids.Installed2ImageId = await _blobHelper.UploadBlobAsync(model.Installed2ImageFile, "stories");
+            }
+            if (model?.ReportFile != null)
+            {
+                ids.ReportId = await _blobHelper.UploadBlobAsync(model.ReportFile, "stories");
+            }
+            if (model?.SignedROFile != null)
+            {
+                ids.SignedROImageId = await _blobHelper.UploadBlobAsync(model.SignedROFile, "stories");
+            }
+            
 
 
 
@@ -127,13 +160,11 @@ namespace GoFpg.API.Controllers
         }
 
         // POST: RepairOrders/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,BillTo,PolicyNumber,HasReferral,ReferralNumber,PartNumber,ArePartsAvailable,HasApproval,InvoiceImageId,ScheduledDate,IsScheduled,InstallerName,Procedure,HasPictures,HasSignature,Mileage,InstallDate,IsInstalled,HasCalibration,CalibrationDone,Email,FirstName,LastName,Address,Address2,City,Zip,State,PhoneNumber,VinNumber,Year,Make,Model,Doors,BodyClass,VehicleType,LaneDeparture,LaneKeep,InsuranceCompany,DateOfLoss,BilledTo")] RepairOrder repairOrder)
         {
-            if (id != repairOrder.Id)
+            if (id != repairOrder.RepairOrderId)
             {
                 return NotFound();
             }
@@ -147,7 +178,7 @@ namespace GoFpg.API.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RepairOrderExists(repairOrder.Id))
+                    if (!RepairOrderExists(repairOrder.RepairOrderId))
                     {
                         return NotFound();
                     }
@@ -170,7 +201,7 @@ namespace GoFpg.API.Controllers
             }
 
             RepairOrder repairOrder = await _context.RepairOrders
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.RepairOrderId == id);
             if (repairOrder == null)
             {
                 return NotFound();
@@ -192,7 +223,7 @@ namespace GoFpg.API.Controllers
 
         private bool RepairOrderExists(int id)
         {
-            return _context.RepairOrders.Any(e => e.Id == id);
+            return _context.RepairOrders.Any(e => e.RepairOrderId == id);
         }
     }
 }

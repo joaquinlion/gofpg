@@ -45,7 +45,7 @@ namespace GoFpg.API.Controllers
             }
 
             Quote quote = await _context.Quotes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.QuoteId == id);
             if (quote == null)
             {
                 return NotFound();
@@ -173,7 +173,7 @@ namespace GoFpg.API.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Email,FirstName,LastName,Address,Address2,City,Zip,State,PhoneNumber,VinNumber,Year,Make,Model,Doors,BodyClass,VehicleType,LaneDeparture,LaneKeep,GlassType,InsuranceCompany,DateOfLoss,BilledTo")] Quote quote)
         {
-            if (id != quote.Id)
+            if (id != quote.QuoteId)
             {
                 return NotFound();
             }
@@ -187,7 +187,7 @@ namespace GoFpg.API.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!QuoteExists(quote.Id))
+                    if (!QuoteExists(quote.QuoteId))
                     {
                         return NotFound();
                     }
@@ -210,7 +210,7 @@ namespace GoFpg.API.Controllers
             }
 
             Quote quote = await _context.Quotes
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.QuoteId == id);
             if (quote == null)
             {
                 return NotFound();
@@ -232,7 +232,7 @@ namespace GoFpg.API.Controllers
 
         private bool QuoteExists(int id)
         {
-            return _context.Quotes.Any(e => e.Id == id);
+            return _context.Quotes.Any(e => e.QuoteId == id);
         }
 
         public IActionResult QuickQuote()

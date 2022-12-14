@@ -1,18 +1,21 @@
 ﻿@model GoFpg.API.Data.Entities.RepairOrder
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h1>Edit</h1>
+<h1>Create</h1>
 
 <h4>RepairOrder</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="RepairOrderId" />
+            <div class="form-group">
+                <label asp-for="RepairOrderId" class="control-label"></label>
+                <select asp-for="RepairOrderId" class ="form-control" asp-items="ViewBag.RepairOrderId"></select>
+            </div>
             <div class="form-group">
                 <label asp-for="BillTo" class="control-label"></label>
                 <input asp-for="BillTo" class="form-control" />
@@ -22,6 +25,11 @@
                 <label asp-for="PolicyNumber" class="control-label"></label>
                 <input asp-for="PolicyNumber" class="form-control" />
                 <span asp-validation-for="PolicyNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PolicyImageId" class="control-label"></label>
+                <input asp-for="PolicyImageId" class="form-control" />
+                <span asp-validation-for="PolicyImageId" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
@@ -73,6 +81,31 @@
                 <input asp-for="Procedure" class="form-control" />
                 <span asp-validation-for="Procedure" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="TagImageId" class="control-label"></label>
+                <input asp-for="TagImageId" class="form-control" />
+                <span asp-validation-for="TagImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DamageImageId" class="control-label"></label>
+                <input asp-for="DamageImageId" class="form-control" />
+                <span asp-validation-for="DamageImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FullDamageImageId" class="control-label"></label>
+                <input asp-for="FullDamageImageId" class="form-control" />
+                <span asp-validation-for="FullDamageImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VinImageId" class="control-label"></label>
+                <input asp-for="VinImageId" class="form-control" />
+                <span asp-validation-for="VinImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InteriorImageId" class="control-label"></label>
+                <input asp-for="InteriorImageId" class="form-control" />
+                <span asp-validation-for="InteriorImageId" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="HasPictures" /> @Html.DisplayNameFor(model => model.HasPictures)
@@ -93,6 +126,16 @@
                 <input asp-for="InstallDate" class="form-control" />
                 <span asp-validation-for="InstallDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="InstalledImageId" class="control-label"></label>
+                <input asp-for="InstalledImageId" class="form-control" />
+                <span asp-validation-for="InstalledImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Installed2ImageId" class="control-label"></label>
+                <input asp-for="Installed2ImageId" class="form-control" />
+                <span asp-validation-for="Installed2ImageId" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="IsInstalled" /> @Html.DisplayNameFor(model => model.IsInstalled)
@@ -103,14 +146,23 @@
                     <input class="form-check-input" asp-for="HasCalibration" /> @Html.DisplayNameFor(model => model.HasCalibration)
                 </label>
             </div>
+            <div class="form-group">
+                <label asp-for="ReportId" class="control-label"></label>
+                <input asp-for="ReportId" class="form-control" />
+                <span asp-validation-for="ReportId" class="text-danger"></span>
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="CalibrationDone" /> @Html.DisplayNameFor(model => model.CalibrationDone)
                 </label>
             </div>
-            
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="SignedROImageId" class="control-label"></label>
+                <input asp-for="SignedROImageId" class="form-control" />
+                <span asp-validation-for="SignedROImageId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>

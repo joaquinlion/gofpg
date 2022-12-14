@@ -114,13 +114,6 @@ namespace GoFpg.API.Models
         //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public DateTime DateOfLoss { get; set; }
 
-        [Display(Name = "Billed to:?")]
-        [MaxLength(50, ErrorMessage = "El campo {0} no puede tener más de {1} carácteres.")]
-        //[Required(ErrorMessage = "El campo {0} es obligatorio.")]
-        public string BilledTo { get; set; }
-
-
-
         //[Display(Name = "Foto")]
         //public Guid ImageId { get; set; }
 

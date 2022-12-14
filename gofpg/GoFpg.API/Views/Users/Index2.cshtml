@@ -1,20 +1,18 @@
 ﻿@model IEnumerable<GoFpg.API.Data.Entities.User>
 
-@{ ViewData["Title"] = "Index"; }
+@{
+    ViewData["Title"] = "Index";
+}
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 <p>
-    <a asp-action="Create" class="btn btn-primary">Nuevo</a>
+    <a asp-action="Create2" class="btn btn-primary">Nuevo</a>
 </p>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Usuarios</h3>
-                @if (User.IsInRole("Admin")) {
-            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index2">UserMgmt</a>
-                }
-            
+                <h3 class="panel-title">Mecánicos</h3>
             </div>
             <div class="panel-body">
                 <table class="table table-hover table-responsive table-striped" id="MyTable">
@@ -22,6 +20,9 @@
                         <tr>
                             <th>
                                 @Html.DisplayNameFor(model => model.FullName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.UserType)
                             </th>
                             <th>
                                 @Html.DisplayNameFor(model => model.Email)
@@ -41,28 +42,31 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FullName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.VehiclesCount)
-                </td>
-                <td>
-                    <img src="@item.ImageFullPath" style="width: 100px; height: 100px; border-radius: 70px;" />
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Vehiculos</a>
-                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
-                </td>
-            </tr>}
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UserType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.VehiclesCount)
+                                </td>
+                                <td>
+                                    <img src="@item.ImageFullPath" style="width: 100px; height: 100px; border-radius: 150px;" />
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                                </td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
@@ -77,7 +81,8 @@
     <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="/js/deleteDialog.js"></script>
 
-    <script type="text/javascript">$(document).ready(function () {
+    <script type="text/javascript">
+        $(document).ready(function () {
             $('#MyTable').DataTable({
                 "language": {
                     "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
@@ -90,5 +95,6 @@
 
             // Delete item
             sc_deleteDialog.openModal('deleteItem', true, 'btnYesDelete', '/Users/Delete/', false);
-        });</script>
+        });
+    </script>
 }

@@ -137,6 +137,7 @@ namespace GoFpg.API.Helpers
             return await _userManager.UpdateAsync(currentUser);
         }
 
+
         public async Task<string> GeneratePasswordResetTokenAsync(User user)
         {
             return await _userManager.GeneratePasswordResetTokenAsync(user);
@@ -151,5 +152,6 @@ namespace GoFpg.API.Helpers
         {
             return await _signInManager.CheckPasswordSignInAsync(user, password, false);
         }
+
     }
 }

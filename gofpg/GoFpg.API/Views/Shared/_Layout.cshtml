@@ -6,13 +6,13 @@
     <meta name="description" content="Offering Mobile Auto Glass Repairs & Replacements, With Easy Scheduling. Call Us Now!" />
     <title>@ViewData["Title"] | Florida Prime Glass®</title>
     <link rel="icon" type="image/x-icon" href="~/Images/Favicon/FPG.ico"/>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-dark.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link href="~/css/scanstyle.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light @*bg-white*@ border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark @*bg-white*@  box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" font="FiraSans-UltraItalic.ttf">
                     <img src="~/Images/logofpg.png" width="160" height="66" />
@@ -23,49 +23,49 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-
-                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        @if (User.IsInRole("Admin"))
                         {
-
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Procedures" asp-action="Index">Procedimientos</a>
+                                <a class="nav-link" asp-area="" asp-controller="Procedures" asp-action="Index">Procedimientos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="GlassTypes" asp-action="Index">Glass Types</a>
+                                <a class="nav-link" asp-area="" asp-controller="GlassTypes" asp-action="Index">Glass Types</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Parts" asp-action="Index">Parts</a>
+                                <a class="nav-link" asp-area="" asp-controller="Parts" asp-action="Index">Parts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Quotes" asp-action="Index">Quotes</a>
+                                <a class="nav-link" asp-area="" asp-controller="Quotes" asp-action="Index">Quotes</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="RepairOrders" asp-action="Create">ROs</a>
+                                <a class="nav-link" asp-area="" asp-controller="RepairOrders" asp-action="Create">ROs</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Usuarios</a>
-
+                                <a class="nav-link" asp-area="" asp-controller="RepairOrders1" asp-action="Index">RO1s</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="NewClaim" asp-action="Create">newjob</a>
+                                <a class="nav-link" asp-area="" asp-controller="Users" asp-action="Index">Users</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="InsuranceCompanies" asp-action="Index">InsCos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="InsuranceClaims" asp-action="Index">Claims</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Dealerships" asp-action="Index">Dealerships</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="https://mail.gofpg.com">Mail</a>
-                            </li>
+                            @*<li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="NewClaim" asp-action="Create">newjob</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="InsuranceCompanies" asp-action="Index">InsCos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="InsuranceClaims" asp-action="Index">Claims</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Dealerships" asp-action="Index">Dealerships</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="https://mail.gofpg.com">Mail</a>
+            </li>*@
                         }
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
+                        @*<li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>*@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @if (User.Identity.IsAuthenticated)
@@ -79,6 +79,9 @@
  }
                         else
                         {
+                            <a class="btn-sm btn-outline-danger" href="tel:+15613004895">
+                                Call Now  561-300-4895
+                            </a>
                             <li><a asp-area="" asp-controller="Account" asp-action="Login">Log In</a></li>
 }
                     </ul>
@@ -92,14 +95,19 @@
         </main>
     </div>
     
-    <footer class="border-top footer text-muted">
-        @*<div class="container">
-                &copy; Copyright 2021 - goFpg is a Trademark of Florida Prime Glass LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-            </div>*@
+    <footer class=" footer text-muted">
+        <div class="container">
+                &copy; Copyright 2021 - goFpg is a Trademark of Florida Prime Glass LLC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy Policy</a> - <a href="~/Files/Information_Security_Policy_FPG.pdf" target="_blank" rel="noopener noreferrer">Information Security Policy</a>
+            </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <!-- Calendly badge widget begin -->
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    <script type="text/javascript">window.onload = function () { Calendly.initBadgeWidget({ url: 'https://calendly.com/fpgappt?hide_gdpr_banner=0&background_color=00234f&text_color=ffffff&primary_color=ba1f2f', text: 'Schedule an Appointment', color: '#ba1f2f', textColor: '#ffffff', branding: false }); }</script>
+<!-- Calendly badge widget end -->
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

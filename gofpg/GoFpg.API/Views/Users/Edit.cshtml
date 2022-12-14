@@ -15,7 +15,8 @@
             <input type="hidden" asp-for="Email" />
 
             <partial name="_User" />
-
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin")) { <input asp-for="UserType" />}
+        
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
                 <a asp-action="Index" class="btn btn-success">Regresar</a>

@@ -2,7 +2,7 @@
 
 namespace GoFpg.API.Migrations
 {
-    public partial class commentuser : Migration
+    public partial class newmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
